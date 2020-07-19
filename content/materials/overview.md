@@ -57,7 +57,7 @@ We are collating materials for:
 - [General statistics](#generalstatistics)
 - [Measurement processing](#measurements)
 
-[**Workshop**](/workshops/) materials can be found [**here**](/docs-workshops/) 
+[**Workshop**](/#workshops/) materials can be found [**here**](/docs-workshops/) 
 
 
 Content to be added.
