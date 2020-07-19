@@ -4,12 +4,11 @@ draft: false
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
 tags: ["Dendrometer", "Carbon Balance", "Variability Decay"]
-linktitle: treeprocnet Use
+linktitle: tree water deficite
 menu:
   esa-workshop:
     parent: Introduction
-    weight: 10
-summary: Using TREX and treeprocnet for high-frequency DEEP data.
+    weight: 20
 title: Motivation
 type: docs
 toc: true
@@ -20,7 +19,7 @@ toc: true
 
 
 
-## R Markdown
+## Dendrometers
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
