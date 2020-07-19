@@ -1,0 +1,114 @@
+# Navigation Links
+#   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
+#     desired widget in your `content/home/` folder.
+#   The weight parameter defines the order that the links will appear in.
+
+#[[main]]
+#  name = "Home"
+#  url = "#hero"
+#  weight = 10
+  
+#[[main]]
+#  name = "About"
+#  url = "mission/"
+#  weight = 20
+
+[[main]]
+  name = "About"
+  weight = 20
+  identifier = "About"
+  
+[[main]]
+  name = "Mission"
+  url = "mission/"
+  weight = 10
+  parent = "About"
+  
+[[main]]
+  name = "People"
+  url = "mission/#people"
+  weight = 20
+  parent = "About"
+  
+  
+
+#[[main]]
+#  name = "People"
+#  url = "#people"
+#  weight = 30
+  
+#[[main]]
+#  name = "Courses"
+#  url = "courses/"
+#  weight = 40
+
+[[main]]
+  name = "Materials"
+  url = "materials/"
+  weight = 40
+  identifier = "mats"
+  
+[[main]]
+  name = "Overview"
+  url = "materials/"
+  weight = 5
+  parent = "mats"  
+  
+[[main]]
+  name = "Data Handling"
+  url = "docs-dataio/"
+  weight = 10
+  parent = "mats"
+  
+[[main]]
+  name = "General Statistics"
+  url = "docs/"
+  weight = 20
+  parent = "mats"
+  
+[[main]]
+  name = "Measurements"
+  url = "docs/"
+  weight = 30
+  parent = "mats"
+  
+  [[main]]
+  name = "Workshops"
+  url = "#workshops"
+  weight = 50
+
+
+[[main]]
+  name = "News"
+  url = "#news"
+  weight = 60
+
+
+
+[[main]]
+  name = "Contact"
+  url = "#contact"
+  weight = 70
+
+
+
+#[[main]]
+#  name = "Projects"
+#  url = "#projects"
+#  weight = 30
+
+#[[main]]
+#  name = "Publications"
+#  url = "#featured"
+#  weight = 40
+
+
+  
+
+
+# Link to a PDF of your resume/CV from the menu.
+# To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
+# [[main]]
+#    name = "CV"
+#    url = "files/cv.pdf"
+#    weight = 70
