@@ -15,7 +15,6 @@ education:
     year: 2013
 email: "hurley@gfz-potsdam.de"
 interests:
-- Boreal ecohydrology
 - Wetland-forest interactions
 - Urban trees
 - Reproducible science
