@@ -54,7 +54,7 @@ subtitle = "Methods for wrangling and cleaning DEEP and environmental data"
 Valuable initiatives are currently collecting global databases of important tree physiological parameters, which could be utilized within a plethora of relevant forest ecological and tree physiological research activities. The task at hand is to identify the “hotspots” of data platforms and the means to access and process the data, which is often not a straightforward task. Here we provide support for importing global, regional and site-specific data covering climatic, physiological and allometric measurements.  
 
 
-<a href='docs-dataio/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
+<a href='/docs-dataio/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
 
 
 Examples (will) include:

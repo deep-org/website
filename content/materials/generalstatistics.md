@@ -51,7 +51,7 @@ With the ever increasing amount of available analyses techniques, clear guidance
 Here we provide guidance on applying general statistical analyses on both spatial and temporally specific data.
 Moreover, uncertainty analyses and mixed-effect modelling frameworks are provided.  
 
-<a href='docs-stats/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
+<a href='/docs-stats/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
 
 Examples (will) include:
 
