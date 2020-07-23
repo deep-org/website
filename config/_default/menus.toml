@@ -62,13 +62,13 @@
   
 [[main]]
   name = "General Statistics"
-  url = "docs/"
+  url = "docs-stats/"
   weight = 20
   parent = "mats"
   
 [[main]]
   name = "Measurements"
-  url = "docs/"
+  url = "docs-measurements/"
   weight = 30
   parent = "mats"
   

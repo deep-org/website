@@ -4,10 +4,10 @@ draft: false
 lastmod: "2018-09-09T00:00:00Z"
 linktitle: An Example Course
 menu:
-    docs-dataio:
-      example:
-        name: Overview
-        weight: 1
+  docs-stats:
+    example:
+      name: Overview
+      weight: 1
 summary: Learn how to use Academic's docs layout for publishing online courses, software documentation, and tutorials.
 title: Overview
 toc: true
