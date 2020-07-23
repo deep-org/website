@@ -37,13 +37,17 @@ social:
   link: https://github.com/the-hull
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
-# - icon: cv
-#   icon_pack: ai
-#   link: files/cv.pdf
+- icon: cv
+  icon_pack: ai
+  link: https://github.com/the-Hull/aglhurley/raw/master/static/cv/hurley_cv.pdf
 superuser: true
 title: Alexander Hurley
 user_groups:
 - Founders
 ---
 
-Things I've done and things I love
+
+My aim is to involve myself in innovative, collaborative and inter-disciplinary research in environmental sciences and applied ecology, enabling evidence-based decision-making.
+My research foci lie in (wetland) ecohydrology, tree-growth dynamics and plant ecophysiology.
+I continuously dedicate myself to the generation of data, (software) tools and rigorous analyses in a transparent, accessible and reproducible manner.
+
