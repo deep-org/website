@@ -3,12 +3,12 @@ title: ESA 2020 Workshop
 date: "2018-09-09T00:00:00Z"
 draft: false
 lastmod: "2018-09-09T00:00:00Z"
-linktitle: Overview
+linktitle: ESA2020 Dendrometer & Sap flow course
 menu:
     esa-workshop:
       name: Introduction
       weight: 1
-summary: Applying TREX and treenetproc for dendrometer and sapflow observations at high-frequencies
+summary: Introducing (R) software for processing high-frequency dendrometer and sapflow data.
 type: docs
 weight: 1
 ---
