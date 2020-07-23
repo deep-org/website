@@ -463,10 +463,9 @@ lines(data = dendro_data_L1, value ~ ts, col = "grey70")
 lines(data = dendro_data_L2_notemp, value ~ ts, col = "#08519c")
 ```
 
-<div class="figure">
-<img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/temp-adjust-1.png" alt="The sample temperature dataset does not assume frost after the end of February, therefore many values during the frost shrinkage are classified as outliers and deleted." width="1600" />
-<p class="caption">Figure 2: The sample temperature dataset does not assume frost after the end of February, therefore many values during the frost shrinkage are classified as outliers and deleted.</p>
-</div>
+<img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/temp-adjust-1.png" width="1600" />
+
+The sample temperature dataset does not assume frost after the end of February, therefore many values during the frost shrinkage are classified as outliers and deleted.
 
 ### Manual corrections
 
@@ -721,10 +720,10 @@ legend("topleft",
        cex=1.5)
 ```
 
-<div class="figure">
-<img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/causal-change-1.png" alt="cumulative days of the three years (2008, 2009 and 2010) where the daily cycle is likely explained by transpiration, temperature or something else (other). These results show that transporation for this individual tree is starting around day of year 50 and continues until day of year 325" width="1600" />
-<p class="caption">Figure 3: cumulative days of the three years (2008, 2009 and 2010) where the daily cycle is likely explained by transpiration, temperature or something else (other). These results show that transporation for this individual tree is starting around day of year 50 and continues until day of year 325</p>
-</div>
+<img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/causal-change-1.png" width="1600" />
+
+Cumulative days of the three years (2008, 2009 and 2010) where the daily cycle is likely explained by transpiration, temperature or something else (other). 
+These results show that transporation for this individual tree is starting around day of year 50 and continues until day of year 325.
 
 ## Tree water deficit (TWD) as an indicator of drought stress.
 
@@ -785,10 +784,9 @@ text(mean(c(mean(grow_seas_L2$gro_start),
      "Growing season")
 ```
 
-<div class="figure">
-<img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/twd-drought-1.png" alt="Tree water deficit (TWD) dynamics reveal that the tree mainly shrinks during the night in winter." width="1600" />
-<p class="caption">Figure 4: Tree water deficit (TWD) dynamics reveal that the tree mainly shrinks during the night in winter.</p>
-</div>
+<img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/twd-drought-1.png" width="1600" />
+
+Tree water deficit (TWD) dynamics reveal that the tree mainly shrinks during the night in winter.
 
 Besides winter shrinkage, drought impacts should be detected within the growing season.
 

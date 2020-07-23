@@ -382,7 +382,7 @@ In periods of probable frost (i.e. when the `temperature < lowtemp`) the thresho
 > The sample temperature dataset assumes **potential frost and thaw conditions in the months December, January and February**.
 
 
-```{r temp-adjust, echo = TRUE, fig.cap = "The sample temperature dataset does not assume frost after the end of February, therefore many values during the frost shrinkage are classified as outliers and deleted."}
+```{r temp-adjust, echo = TRUE}
 
 dendro_data_L2_notemp <- proc_dendro_L2(dendro_L1 = dendro_data_L1,
                                         tol_jump = 30, 
@@ -403,6 +403,8 @@ lines(data = dendro_data_L2_notemp, value ~ ts, col = "#08519c")
 
 
 ```
+
+The sample temperature dataset does not assume frost after the end of February, therefore many values during the frost shrinkage are classified as outliers and deleted.
 
 ### Manual corrections
 
@@ -603,7 +605,7 @@ other <- aggregate(other_stats_L2$phase_class,by=list(other_stats_L2$doy),sum)
 ```
 
 
-```{r causal-change, fig.cap = "cumulative days of the three years (2008, 2009 and 2010) where the daily cycle is likely explained by transpiration, temperature or something else (other). These results show that transporation for this individual tree is starting around day of year 50 and continues until day of year 325"}
+```{r causal-change, fig.cap = ""}
 
 
 #Plot causes of daily radial change patterns:
@@ -636,9 +638,12 @@ legend("topleft",
 
 ```
 
+Cumulative days of the three years (2008, 2009 and 2010) where the daily cycle is likely explained by transpiration, temperature or something else (other). 
+These results show that transporation for this individual tree is starting around day of year 50 and continues until day of year 325.
+
 ## Tree water deficit (TWD) as an indicator of drought stress.
 
-```{r twd-drought, fig.cap = "Tree water deficit (TWD) dynamics reveal that the tree mainly shrinks during the night in winter."}
+```{r twd-drought}
 
 #Plot minimum daily twd against day of year:
 par(mfrow=c(1,1))
@@ -697,6 +702,8 @@ text(mean(c(mean(grow_seas_L2$gro_start),
 
 
 ```
+
+Tree water deficit (TWD) dynamics reveal that the tree mainly shrinks during the night in winter.
 
 Besides winter shrinkage, drought impacts should be detected within the growing season.
 

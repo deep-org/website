@@ -25,8 +25,12 @@ links:
   url: /docs-workshops/esa-workshop2020
 - icon: file-alt
   icon_pack: fas
-  name: See Files
+  name: View Files
   url: https://github.com/deep-org/workshop_data/tree/master/esa-workshop2020
+- icon: external-link-alt
+  icon_pack: fas
+  name: View Session
+  url: https://eco.confex.com/eco/2020/meetingapp.cgi/Session/17788
 
 math: true
 publishDate: "2020-07-01T00:00:00Z"
@@ -45,7 +49,8 @@ url_video: ""
 ---
 
 
-Increasing availability of tree physiological time series on tree growth and water use provide unique opportunities for exploring tree and forest function, health, and resilience to ongoing environmental changes.\ However, processing such time series data is challenging, due to data quantity and quality, varying time steps, labour-intensive data cleaning, and assumptions for converting raw measurements to physiologically meaningful quantities. 
+Increasing availability of tree physiological time series on tree growth and water use provide unique opportunities for exploring tree and forest function, health, and resilience to ongoing environmental changes.
+However, processing such time series data is challenging, due to data quantity and quality, varying time steps, labour-intensive data cleaning, and assumptions for converting raw measurements to physiologically meaningful quantities. 
 To resolve such issues, software tools are continuously being developed, facilitating data pre- and post-processing in a fast, efficient and reproducible way.
 
 Within this workshop we provide participants hands-on training on novel software tools: R packages to process dendrometer and sap flow data, and PhytoSim models to integrate data and unravel underlying mechanisms.
@@ -68,7 +73,7 @@ ___
 
 ## Co-organizers
  
-- Christoforos Pappas (Universit? de Montr?al)
+- Christoforos Pappas (Université de Montréal)
 - Roman Zweifel (Swiss Federal Institute for Forest, Snow and Landscape Research WSL)
 - Kathy Steppe (Ghent University)
 - Alexander Hurley (GFZ)
