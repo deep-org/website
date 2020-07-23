@@ -26,9 +26,9 @@ social:
 - icon: envelope
   icon_pack: fas
   link: "mailto:Richard.Peters@UGent.be?subject=DEEP Question"
-- icon: google-scholar
+- icon: researchgate
   icon_pack: ai
-  link: https://scholar.google.com/citations?user=yWbK0bgAAAAJ&hl=en&oi=sra
+  link: https://www.researchgate.net/profile/Richard_Peters10/publications
 superuser: true
 title: Richard L. Peters
 user_groups:
