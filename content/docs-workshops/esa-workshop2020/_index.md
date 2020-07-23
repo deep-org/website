@@ -14,7 +14,8 @@ weight: 1
 ---
 
 
-Increasing availability of tree physiological time series on tree growth and water use provide unique opportunities for exploring tree and forest function, health, and resilience to ongoing environmental changes.\ However, processing such time series data is challenging, due to data quantity and quality, varying time steps, labour-intensive data cleaning, and assumptions for converting raw measurements to physiologically meaningful quantities. 
+Increasing availability of tree physiological time series on tree growth and water use provide unique opportunities for exploring tree and forest function, health, and resilience to ongoing environmental changes.
+However, processing such time series data is challenging, due to data quantity and quality, varying time steps, labour-intensive data cleaning, and assumptions for converting raw measurements to physiologically meaningful quantities. 
 To resolve such issues, software tools are continuously being developed, facilitating data pre- and post-processing in a fast, efficient and reproducible way.
 
 Within this workshop we provide participants hands-on training on novel software tools: R packages to process dendrometer and sap flow data, and PhytoSim models to integrate data and unravel underlying mechanisms.
