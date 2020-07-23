@@ -56,8 +56,8 @@ Moreover, uncertainty analyses and mixed-effect modelling frameworks are provide
 Examples (will) include:
 
 - Variability decay
-- Spatial analyses [FB]; (PCA; Spatial auto-correlation; cluster analyses)
-- Mixed-effect modelling [SK]; (PSME)
-- Uncertainty analysis [RP/CP]; (example TREX; tree ring uncertainties)  
+- Spatial analyses (PCA, Spatial auto-correlation, cluster analyses)
+- Mixed-effect modelling (PSME)
+- Uncertainty analysis (using `TREX`; tree ring uncertainties)  
 
 <br>
