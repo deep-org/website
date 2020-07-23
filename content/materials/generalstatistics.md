@@ -58,6 +58,6 @@ Examples (will) include:
 - Variability decay
 - Spatial analyses (PCA, Spatial auto-correlation, cluster analyses)
 - Mixed-effect modelling (PSME)
-- Uncertainty analysis (using `TREX`; tree ring uncertainties)  
+- Uncertainty analysis (using [`TREX`](https://the-hull.github.io/TREX/index.html), tree ring uncertainties)  
 
 <br>
