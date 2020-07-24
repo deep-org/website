@@ -100,7 +100,6 @@ par(mfrow=c(1,1))
 par(mar = c(5, 5, 5, 5))
 for(y in 1:length(unique(years))){
   # selected year
-  
   sel<-dendro_data_L0[which(years==unique(years)[y]),]
   # handle first year
   if(y==1){
@@ -544,7 +543,7 @@ Make sure to validate these numbers for rationality.
 
 ### Phase statistics
 
-Several characteristics of shrinkage and expansion phases can be calculated with the function phase_stats.
+Several characteristics of shrinkage and expansion phases can be calculated with the function `phase_stats`.
 The function `phase_stats` calculates the timing, duration, amplitude and the rate of change of shrinkage and expansion phases and outputs one plot per such phase. 
 Below are two selected outputs from the function call (which produces > 3000 plots).
 

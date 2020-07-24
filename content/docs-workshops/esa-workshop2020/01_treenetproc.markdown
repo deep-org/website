@@ -97,7 +97,6 @@ par(mfrow=c(1,1))
 par(mar = c(5, 5, 5, 5))
 for(y in 1:length(unique(years))){
   # selected year
-  
   sel<-dendro_data_L0[which(years==unique(years)[y]),]
   # handle first year
   if(y==1){
@@ -597,7 +596,7 @@ Make sure to validate these numbers for rationality.
 
 ### Phase statistics
 
-Several characteristics of shrinkage and expansion phases can be calculated with the function phase_stats.
+Several characteristics of shrinkage and expansion phases can be calculated with the function `phase_stats`.
 The function `phase_stats` calculates the timing, duration, amplitude and the rate of change of shrinkage and expansion phases and outputs one plot per such phase. 
 Below are two selected outputs from the function call (which produces > 3000 plots).
 
@@ -765,9 +764,7 @@ text(mean(c(mean(grow_seas_L2$gro_start),
 
 <img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/twd-drought-1.png" width="1600" />
 
-**Figure:** Tree water deficit (TWD) dynamics reveal that the tree mainly shrinks during the night in winter.
-Besides winter shrinkage, drought impacts should be detected within the growing season.
-During the growing season 2008 showed more shrinkage compared to 2010, revealing the tree was experience stronger water limitation during growth.
+**Figure:** *Tree water deficit (TWD) dynamics reveal that the tree mainly shrinks during the night in winter. Besides winter shrinkage, drought impacts should be detected within the growing season. During the growing season 2008 showed more shrinkage compared to 2010, revealing the tree was experience stronger water limitation during growth.*
 
 ## 7. Using `treeprocnet`
 
