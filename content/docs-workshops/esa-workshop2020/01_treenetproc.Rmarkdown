@@ -11,10 +11,7 @@ menu:
 title: Analysis Workflow
 type: docs
 # toc: true
-output:
-  blogdown::html_page:
-      number_sections: true
-      toc: true
+toc: true
 ---
 
 
