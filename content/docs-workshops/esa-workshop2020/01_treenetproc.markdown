@@ -209,8 +209,7 @@ for(y in 1:length(unique(years))){
 
 <img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/data-import-temp-1.png" width="1600" />
 
-**Figure:** *Here we plotted all three years of raw temperature data in the Lötschental (LOT; Switzerland).
-See [Pappas et al. (2020; Ecography)](https://doi.org/10.1111/ecog.04968) for more site specific information.*
+**Figure:** *Here we plotted all three years of raw temperature data in the Lötschental (LOT; Switzerland). See [Pappas et al. (2020; Ecography)](https://doi.org/10.1111/ecog.04968) for more site specific information.*
 
 ## 4. Time-alignment (L1)
 
@@ -629,8 +628,7 @@ phase_stats_L2 <- phase_stats(dendro_L2 = dendro_data_L2,
 ![](/docs-workshops/esa-workshop2020/01_treenetproc_files/shrinkage_01.png)
 ![](/docs-workshops/esa-workshop2020/01_treenetproc_files/expansion_01.png)
 
-**Figure:** The plot shows the maximum (filled circle) and minimum (filled triangle) of the respective phase and reports its statistics.
-Empty circles and triangles show maxima or minima of previous or subsequent phases.
+**Figure:** *The plot shows the maximum (filled circle) and minimum (filled triangle) of the respective phase and reports its statistics. Empty circles and triangles show maxima or minima of previous or subsequent phases.*
 
 
 The function returns a `data.frame` containing the timing, duration, amplitude and slope of the shrinkage (`shrink`) and expansion (`exp`) phases.
@@ -706,8 +704,7 @@ legend("topleft",
 
 <img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/causal-change-1.png" width="1600" />
 
-**Figure:** Cumulative days of the three years (2008, 2009 and 2010) where the daily cycle is likely explained by transpiration, temperature or something else (other). 
-These results show that transpiration for this individual tree is starting around day of year 50 and continues until day of year 325.
+**Figure:** *Cumulative days of the three years (2008, 2009 and 2010) where the daily cycle is likely explained by transpiration, temperature or something else (other). These results show that transpiration for this individual tree is starting around day of year 50 and continues until day of year 325.*
 
 ### Tree water deficit (TWD) as an indicator of drought stress.
 
