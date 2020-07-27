@@ -1,5 +1,5 @@
 ---
-author: [cpappas]
+author: [Kathy Steppe]
 draft: false
 date: 2020-07-21T20:00:00
 categories: ["R", "workshop"]

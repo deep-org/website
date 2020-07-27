@@ -3,7 +3,7 @@ author: [cpappas]
 draft: false
 date: 2020-07-21T20:00:00
 categories: ["R", "workshop"]
-tags: ["sap flow", "stomatal response", "uncertainty"]
+tags: ["sap flow", "crown conductance", "uncertainty"]
 linktitle: TREX Workflow
 menu:
     esa-workshop:
@@ -16,14 +16,14 @@ toc: true
 
 
 ## 1. Background
-The package TREX provides functionalities for thermal dissipation sapflow data pre- and post-processing.
+The package TREX provides functionalities for thermal dissipation sap flow data pre- and post-processing.
 More specifically, raw sap flow data (expressed as temperature or voltage differences) can be:
 
 - visually inspected and outliers can be identified and removed (manual and automatic detection),
 - zero-flow conditions can be derived using a wealth of well-established approaches,
 - sap flow rates can be estimated using either literature- or user-specific calibration parameters for the thermal dissipation method,
 - uncertainty of sap flow estimates stemming from parameter choices can be assessed,
-- tree ecophysiologial responses (i.e. crown conductance) can be derived.
+- tree ecophysiologial responses to environmental drivers can be derived (e.g., crown conductance vs vapor pressure deficit relations) .
 
 
 
@@ -47,7 +47,7 @@ library(TREX)
 
 library(zoo) # work with time series objects
 library(lubridate) # work with date formats
-library(shiny) # insual inspection and outlier detection
+library(shiny) # visual inspection and outlier detection
 library(plotly) # interactive plots
 ```
 
@@ -100,7 +100,7 @@ head(prc)
 ## 6  06/01/06 0.0000000
 
 
-# sap flow data (15-min)
+# sap flow (15-min)
 sensor <- read.table(text = sensor_url, header=T, sep="\t")
 head(sensor)
 ##             Timestamp dV
@@ -216,17 +216,25 @@ plot(prc_1day, main="hourly precipitation data (mm)")
 
 ### Visual inspection of time series, outlier detection and removal
 
-Note: the current version of outlier detection cannot handle large datasets (e.g.,  hourly data for several years) cause the interactive plots become slow.
+Note: the current version of outlier detection cannot handle large datasets (e.g., hourly data for several years) cause the interactive plots become slow.
 We suggest, if you have long time series that you would like to inspect, to split the time series in shorter time periods and run the following steps sequentially.
 
 Here, we provide an illustration of the functionalities of the `outlier()` using couple of months of hourly sap flow data.
+
+In action, the outlier function looks as follows:
+
+<!-- ![](/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif) -->
+
+<a href="/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif" target = "_blank"><img alt="Outlier function" src="/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif"></a>
+**Figure:** *Application of the `outlier()` function to the example data set - note the interactive selection and deselection of observations considered outliers. The interactive app allows saving a list to disk with the original data set, the cleaned version, as well as subsets containing the automatic and the manual outlier selection.*
+
 
 
 ```r
 # see help page for a detailed description
 #?outlier()
 
-# from a quick visual inspection of the hourly time sap flow time series data, we see that there are few irregularities, and potential outliers at the begining of the 2015 growing season
+# from a quick visual inspection of the hourly time sap flow time series data, we see that there are few irregularities, and potential outliers at the beginning of the 2015 growing season
 
 plot(sensor_raw_1h, main="hourly raw sap flow data (mV)")
 ```
@@ -235,7 +243,7 @@ plot(sensor_raw_1h, main="hourly raw sap flow data (mV)")
 
 ```r
 
-# zoom in to a shorter time period
+# zoom-in to a shorter time period
 plot(window(sensor_raw_1h, start = "2015-03-01 00:00:00", end = "2015-05-01 00:00:00"), main="March - April 2015; hourly raw sap flow data (mV)")
 ```
 
@@ -288,22 +296,17 @@ sensor_raw_1h_df_clean[sensor_raw_1h_df_clean$timestamp %in% tocheck_Cleaned$tim
                           
 plot(sensor_raw_1h_df)
 points(sensor_raw_1h_df_clean, col=2)
+legend("bottomright", c("raw", "outlier-free"),
+       lty = 1, col = c("black", "red") )
 ```
 
 <img src="/docs-workshops/esa-workshop2020/02_trex_files/figure-html/unnamed-chunk-4-3.png" width="1600" />
 
 ```r
-
+       
 # convert time stamp to character
 sensor_raw_1h_df_clean$timestamp <- as.character(sensor_raw_1h_df_clean$timestamp)   
 ```
-
-In action, the outlier function looks as follows:
-
-<!-- ![](/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif) -->
-
-<a href="/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif" target = "_blank"><img alt="Outlier function" src="/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif"></a>
-**Figure:** *Application of `outlier()` function to the example data set - note the interactive selection and deselection of observations considered outliers. The interactive app allows saving a list to disk with the original data set, the cleaned version, as well as subsets containing the automatic and the manual outlier selection.*
 
 ## 4. Estimate zero-flow conditions (DTmax) 
 
@@ -682,7 +685,7 @@ output <- tdm_uncertain(window(sensor_raw_1h,
 
 
 
-## 7. Using `TREX`
+## 9. Using `TREX`
 
 For use in publication, the reference is:
 
@@ -707,6 +710,6 @@ citation("TREX")
 ##   }
 ```
 
-## 8. References
+## 10. References
 
 - Richard Peters, Christoforos Pappas and Alexander Hurley (2020). TREX: TRree sap flow EXtractor. R package version 0.0.0.9000. https://the-hull.github.io/TREX/

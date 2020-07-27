@@ -3,7 +3,7 @@ author: [cpappas]
 draft: false
 date: 2020-07-21T20:00:00
 categories: ["R", "workshop"]
-tags: ["sap flow", "stomatal response", "uncertainty"]
+tags: ["sap flow", "crown conductance", "uncertainty"]
 linktitle: TREX Workflow
 menu:
     esa-workshop:
@@ -183,7 +183,7 @@ In action, the outlier function looks as follows:
 <!-- ![](/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif) -->
 
 <a href="/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif" target = "_blank"><img alt="Outlier function" src="/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif"></a>
-**Figure:** *Application of `outlier()` function to the example data set - note the interactive selection and deselection of observations considered outliers. The interactive app allows saving a list to disk with the original data set, the cleaned version, as well as subsets containing the automatic and the manual outlier selection.*
+**Figure:** *Application of the `outlier()` function to the example data set - note the interactive selection and deselection of observations considered outliers. The interactive app allows saving a list to disk with the original data set, the cleaned version, as well as subsets containing the automatic and the manual outlier selection.*
 
 
 ```{r echo = TRUE, eval = TRUE}
@@ -360,7 +360,7 @@ output <- tdm_uncertain(window(sensor_raw_1h,
 
 
 
-## 7. Using `TREX`
+## 9. Using `TREX`
 
 For use in publication, the reference is:
 
@@ -368,6 +368,6 @@ For use in publication, the reference is:
 citation("TREX")
 ```
 
-## 8. References
+## 10. References
 
 - Richard Peters, Christoforos Pappas and Alexander Hurley (2020). TREX: TRree sap flow EXtractor. R package version 0.0.0.9000. https://the-hull.github.io/TREX/
