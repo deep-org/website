@@ -1,0 +1,370 @@
+---
+author: [cpappas]
+draft: false
+date: 2020-07-21T20:00:00
+categories: ["R", "workshop"]
+tags: ["sap flow", "stomatal response", "uncertainty"]
+linktitle: TREX Workflow
+menu:
+    esa-workshop:
+      weight: 20
+title: Analysis Workflow
+type: docs
+toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(collapse = TRUE)
+knitr::opts_chunk$set(fig.height = 6.5, fig.width = 8, dpi = 200)
+knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+## 1. Background
+The package TREX provides functionalities for thermal dissipation sapflow data pre- and post-processing.
+More specifically, raw sap flow data (expressed as temperature or voltage differences) can be:
+
+- visually inspected and outliers can be identified and removed (manual and automatic detection),
+- zero-flow conditions can be derived using a wealth of well-established approaches,
+- sap flow rates can be estimated using either literature- or user-specific calibration parameters for the thermal dissipation method,
+- uncertainty of sap flow estimates stemming from parameter choices can be assessed,
+- tree ecophysiologial responses (i.e. crown conductance) can be derived.
+
+
+
+
+## 2. Set-up Steps
+
+```{r pkg-install, message=FALSE, echo = TRUE, eval = FALSE}
+# install if necessary
+packages <- (c("remotes","zoo","lubridate","shiny","plotly"))
+install.packages(setdiff(packages, rownames(installed.packages())))
+remotes::install_github("the-Hull/TREX")
+```
+
+
+```{r  message=FALSE, echo = TRUE, eval = TRUE}
+library(TREX)
+# to get a full list of available functionalities check
+#?TREX
+
+library(zoo) # work with time series objects
+library(lubridate) # work with date formats
+library(shiny) # insual inspection and outlier detection
+library(plotly) # interactive plots
+```
+
+## 3. Data preparation
+
+### Import data
+
+Sap flow time series data and concurrently recorded meteorological data should be provided as input.
+
+```{r echo = TRUE, eval = TRUE}
+# URLs were the data are stored
+vpd_url <- RCurl::getURL("https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2020/Environmental%20data/Vapour_pressure_deficit%20(kPa).txt")
+rad_url <- RCurl::getURL("https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2020/Environmental%20data/Solar_radiance%20(W%20m-2).txt")
+prc_url <- RCurl::getURL("https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2020/Environmental%20data/Precipitation%20(mm).txt")
+
+sensor_url <- RCurl::getURL("https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2020/TDP%20data/N13Ad_S1_dV%20(mv).txt")
+
+# VPD (15-min)
+vpd <- read.table(text = vpd_url, header=T, sep="\t")
+head(vpd)
+
+# solar radiation (15-min)
+rad <- read.table(text = rad_url, header=T, sep="\t")
+head(rad)
+
+# precipitation (daily)
+prc <- read.table(text = prc_url, header=T, sep="\t")
+head(prc)
+
+
+# sap flow data (15-min)
+sensor <- read.table(text = sensor_url, header=T, sep="\t")
+head(sensor)
+
+# convert to data.frames with timestamp as 'date'
+vpd <- data.frame(timestamp = mdy_hms(vpd$Timestamp, tz="GMT"), value = vpd$VPD)
+rad <- data.frame(timestamp = mdy_hms(rad$Timestamp, tz="GMT"), value = rad$SR)
+prc <- data.frame(timestamp = dmy(prc$Timestamp, tz="GMT"), value = prc$Prec)
+sensor = data.frame(timestamp = mdy_hms(sensor$Timestamp, tz="GMT"), value = sensor$dV)
+```
+
+
+### Create TREX-compatible objects and clip the same time period of sap flow and meteorological data
+
+The package includes functions for checking the consistency in the imported data (e.g., regular time steps in the time series objects, time zone and class of the time stamps).
+
+```{r echo = TRUE, eval = TRUE}
+# see help pages for the following functions
+#?is.trex
+#?dt.steps
+
+sensor_raw_15min <- is.trex(sensor,
+                           tz="GMT",
+                           time.format="%Y-%m-%d %H:%M:%S",
+                           solar.time=T,
+                           long.deg=7.7459,
+                           ref.add=FALSE,
+                           df=FALSE)
+
+sensor_raw_1h <- dt.steps(input=sensor_raw_15min,
+                         start = "2012-05-01 00:00:00",
+                         end = "2015-10-31 23:30:00",
+                         time.int=60,
+                         max.gap=120,
+                         decimals=10,
+                         df=FALSE)
+plot(sensor_raw_1h, main="hourly raw sap flow data (mV)") 
+
+# make a data.frame
+sensor_raw_1h_df <- data.frame(timestamp = ymd_hms(index(sensor_raw_1h), tz="GMT"), value = coredata(sensor_raw_1h))
+
+vpd_15min <- is.trex(vpd,
+                    tz="GMT",
+                    time.format="%Y-%m-%d %H:%M:%S",
+                    solar.time=T,
+                    long.deg=7.7459,
+                    ref.add=FALSE,
+                    df=FALSE)
+
+vpd_1h <- dt.steps(input=vpd_15min,
+                  start = "2012-05-01 00:00:00",
+                  end = "2015-10-31 23:30:00",
+                  time.int=60,
+                  max.gap=120,
+                  decimals=10,
+                  df=FALSE)
+plot(vpd_1h, main="hourly VPD data (kPa)") 
+
+
+rad_15min <- is.trex(rad,
+                    tz="GMT",
+                    time.format="%Y-%m-%d %H:%M:%S",
+                    solar.time=T,
+                    long.deg=7.7459,
+                    ref.add=FALSE,
+                    df=FALSE)
+
+rad_1h <- dt.steps(input=rad_15min,
+                  start = "2012-05-01 00:00:00",
+                  end = "2015-10-31 23:30:00",
+                  time.int=60,
+                  max.gap=120,
+                  decimals=10,
+                  df=FALSE)
+plot(rad_1h, main="hourly radiation data (W m-2)") 
+
+prc_1day <- is.trex(prc,
+                   tz="GMT",
+                   time.format="%Y-%m-%d",
+                   solar.time=T,
+                   long.deg=7.7459,
+                   ref.add=FALSE,
+                   df=FALSE)
+prc_1day <- window(prc_1day, start = "2012-05-01 00:00:00", end = "2015-10-31 23:30:00")
+
+plot(prc_1day, main="hourly precipitation data (mm)") 
+```
+
+
+### Visual inspection of time series, outlier detection and removal
+
+Note: the current version of outlier detection cannot handle large datasets (e.g.,  hourly data for several years) cause the interactive plots become slow.
+We suggest, if you have long time series that you would like to inspect, to split the time series in shorter time periods and run the following steps sequentially.
+
+Here, we provide an illustration of the functionalities of the `outlier()` using couple of months of hourly sap flow data.
+
+```{r echo = TRUE, eval = TRUE}
+# see help page for a detailed description
+#?outlier()
+
+# from a quick visual inspection of the hourly time sap flow time series data, we see that there are few irregularities, and potential outliers at the begining of the 2015 growing season
+
+plot(sensor_raw_1h, main="hourly raw sap flow data (mV)")
+
+# zoom in to a shorter time period
+plot(window(sensor_raw_1h, start = "2015-03-01 00:00:00", end = "2015-05-01 00:00:00"), main="March - April 2015; hourly raw sap flow data (mV)")
+
+# create an object with the period of interest, i.e.,  March - April 2015
+tocheck <- window(sensor_raw_1h, start = "2015-03-01 00:00:00", end = "2015-05-01 00:00:00")
+
+# make a data.frame
+tocheck_df <- data.frame(timestamp = ymd_hms(index(tocheck), tz="GMT"), value = coredata(tocheck))
+
+# save an .RData
+save(tocheck_df, file="tocheck.RData")
+
+# call outlier() app and load the generated .RData file
+
+#outlier()
+
+# after inspecting the time series with the outlier() an .RDS file is exported with the 'outlier-free' data.
+
+# load the 'tocheck_Cleaned.Rds' file
+tocheck_Cleaned <- readRDS("tocheck_Cleaned.Rds")
+tocheck_Cleaned <- tocheck_Cleaned$series_cleaned
+
+summary(tocheck_Cleaned)
+summary(sensor_raw_1h_df)
+
+# Merge the cleaned data with the complete 'sensor_raw_1h' time series
+sensor_raw_1h_df_clean <- sensor_raw_1h_df
+sensor_raw_1h_df_clean[(sensor_raw_1h_df_clean$timestamp >= "2015-03-01 00:00:00" & sensor_raw_1h_df_clean$timestamp <= "2015-05-01 00:00:00"),"value"] <-  NA
+sensor_raw_1h_df_clean[sensor_raw_1h_df_clean$timestamp %in% tocheck_Cleaned$timestamp, "value"] =tocheck_Cleaned$value
+                          
+plot(sensor_raw_1h_df)
+points(sensor_raw_1h_df_clean, col=2)
+
+# convert time stamp to character
+sensor_raw_1h_df_clean$timestamp <- as.character(sensor_raw_1h_df_clean$timestamp)   
+```
+
+In action, the outlier function looks as follows:
+
+<!-- ![](/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif) -->
+
+<a href="/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif" target = "_blank"><img alt="Outlier function" src="/docs-workshops/esa-workshop2020/02_trex_files/outlier.gif"></a>
+**Figure:** *Application of `outlier()` function to the example data set - note the interactive selection and deselection of observations considered outliers. The interactive app allows saving a list to disk with the original data set, the cleaned version, as well as subsets containing the automatic and the manual outlier selection.*
+
+## 4. Estimate zero-flow conditions (DTmax) 
+```{r echo = TRUE, eval = TRUE}  
+# see help page for a detailed description
+#?tdm_dt.max
+
+output.max <- tdm_dt.max(sensor_raw_1h_df_clean, 
+                        methods = c("pd","mw","dr","ed"),
+                        det.pd = TRUE, 
+                        interpolate = FALSE,
+                        max.days = 10,
+                        ed.window = 2*60,
+                        vpd.input = vpd_1h,
+                        sr.input = rad_1h,
+                        criteria = c(sr = 30, vpd = 0.1, cv = 0.5),
+                        df = FALSE)
+
+str(output.max)
+
+plot(output.max$input, ylab = expression(Delta*italic("V")))
+lines(output.max$max.pd, col = "green")
+lines(output.max$max.mw, col = "blue")
+lines(output.max$max.dr, col = "orange")
+lines(output.max$max.ed, col = "purple")
+points(output.max$all.pd, col = "green", pch = 16)
+legend("bottomright", c("raw", "max.pd", "max.mw", "max.dr", "max.ed"),
+       lty = 1, col = c("black", "green", "blue", "orange", "purple") )
+
+# for visualizing, clip a single month (April, 2014)
+plot(window(output.max$input, start="2014-04-01 00:00:00", end="2014-04-30 23:30:00"), ylab = expression(Delta*italic("V")))
+lines(window(output.max$max.pd, start="2014-04-01 00:00:00", end="2014-04-30 23:30:00"), col = "green")
+lines(window(output.max$max.mw, start="2014-04-01 00:00:00", end="2014-04-30 23:30:00"), col = "blue")
+lines(window(output.max$max.dr, start="2014-04-01 00:00:00", end="2014-04-30 23:30:00"), col = "orange")
+lines(window(output.max$max.ed, start="2014-04-01 00:00:00", end="2014-04-30 23:30:00"), col = "purple")
+points(window(output.max$all.pd, start="2014-04-01 00:00:00", end="2014-04-30 23:30:00"), col = "green", pch = 16)
+legend("bottomright", c("raw", "max.pd", "max.mw", "max.dr", "max.ed"),
+       lty = 1, col = c("black", "green", "blue", "orange", "purple") )
+```
+
+
+## 5. Correction of sensor artifacts
+
+### Apply heartwood correction (if needed)
+
+```{r echo = TRUE, eval = TRUE}  
+# The sapwood depth of the selected tree is 2.5 cm, and the probe length 2 cm, so no heartwood correction needs to be applied 
+
+# see help page for a detailed description
+#?tdm_hw.cor
+
+#SFD_cor = tdm_hw.cor(output.max,probe.length=20,
+#                     sapwood.thickness= 25,
+#                     df=F)
+
+```
+
+### Check (and if existing) correct for dampening effects
+
+```{r echo = TRUE, eval = TRUE}  
+# see help page for a detailed description
+#?tdm_damp
+
+SFD_damp <- tdm_damp(output.max,
+                    k.threshold = 0.05,
+                    make.plot = TRUE,
+                    df = FALSE)
+```
+
+
+## 6. Calculate sap flux density
+
+```{r echo = TRUE, eval = TRUE}  
+# see help page for a detailed description
+#?tdm_cal.sfd
+
+output.data <- tdm_cal.sfd(SFD_damp,
+                          make.plot=T,
+                          df=FALSE,
+                          species="Picea abies")
+
+str(output.data)
+
+output.data$out.param
+
+plot(output.data$sfd.pd$sfd)
+```
+
+
+## 7. Calculate crown conductance to water, and its response to VPD
+
+```{r echo = TRUE, eval = TRUE} 
+# see help page for a detailed description
+#?out.data
+
+output <- out.data(input=output.data$sfd.pd$sfd, 
+                  vpd.input=vpd_1h, 
+                  sr.input=rad_1h, 
+                  prec.input=prc_1day,
+                  low.sr = 150, peak.sr=300, vpd.cutoff= 0.5, prec.lim=1,
+                  method="env.filt", max.quant=0.99, make.plot=TRUE)
+str(output)
+
+```
+
+## 8. Estimate uncertainties with a thorough global sensitivity/uncertainty analysis 
+
+```{r echo = TRUE, eval = TRUE, results='hide', fig.keep='all', message = FALSE} 
+# The implemented methods for the global sensitivity and uncertainty analysis are computational demanding. Here, for illustration purposes we have selected a sub-period of few months.
+
+# see help page for a detailed description
+#?tdm_uncertain
+output <- tdm_uncertain(window(sensor_raw_1h, 
+                              start = "2014-03-01 00:00:00",
+                              end = "2014-09-01 00:00:00"),
+                       probe.length=20, 
+                       method="pd",
+                       n=2000,
+                       sw.cor=25,
+                       sw.sd=16,
+                       log.a_mu=output.data$out.param$log.a_mu,
+                       log.a_sd=output.data$out.param$log.a_sd,
+                       b_mu=output.data$out.param$b_mu,
+                       b_sd=output.data$out.param$b_sd,
+                       make.plot=TRUE)
+```
+
+
+
+## 7. Using `TREX`
+
+For use in publication, the reference is:
+
+```{r ref}
+citation("TREX")
+```
+
+## 8. References
+
+- Richard Peters, Christoforos Pappas and Alexander Hurley (2020). TREX: TRree sap flow EXtractor. R package version 0.0.0.9000. https://the-hull.github.io/TREX/

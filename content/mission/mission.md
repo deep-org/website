@@ -52,23 +52,35 @@ subtitle = "We connect researchers and methods"
 
 <h3>This is why</h3>
 
-Trees are wonderful things, or at least remarkable life forms, especially when considering their unique capability of converting atmospheric carbon into large quantities of woody tissue. Trees thus play a key role in the biosphere-atmosphere-climate feedback, as forests store ≈45% of terrestrial carbon within their woody tissue, contribute to ≈50% of terrestrial net primary production, and are a key component within the global hydrological cycle. In other words, trees can be considered as the anchor points in the earth climate system where the carbon and the hydrological cycle are coupled. There has consequently been great incentive to investigate the effect of changing temperatures and water availability on forest functioning. Particularly, tree-ring research and forest inventories have provided valuable insights into the ever changing forest ecosystem. Moreover, time series of plant ecophysiological measurements are becoming increasingly available and enhance our understanding of climate change impacts on tree functioning. 
+There has been a strong movement across the environmental research community away from commercial statistical software and towards the development of custom code for data analysis.
+Coding isn’t just for nerds anymore, but popular programming environments like R, Python, Matlab, Julia and others make it relatively easy to develop scripts for a specific purpose.
+This freedom is a blessing, because our analyses are no longer limited to a set of pre-defined functions in a purchased statistics program.
+Unlimited creativity!
+However, there are some drawbacks to a scientific community where everybody is happily coding away: Methods are becoming less transparent and workflows less reproducible, solutions are becoming more diverse to the point where results potentially become inconsistent, and young researchers at the beginning of their careers may be simply overwhelmed with the wealth of example code that they can find on online forums and in tutorials. 
+We therefore see a growing need to make code for common analyses more accessible, standardize workflows to increase transparency, and thereby save time. 
+This is why we developed the <u>DEEP</u> toolbox as a platform that connects researchers and methods, and as a service to the dendroecological and forest ecophysiological research community. 
+
+
+Ceterum censeo: Trees are wonderful things.
+
 
 <h3>This is how</h3>
 
-In parallel, there is an increasing demand for the development of tools for time-series data curation and processing. Yet, although a plethora of freely available analysis techniques exist, in the form of R scripts and packages, a gap remains between their availability and implementation. Dendro-Ecological and Eco-Physiological (DEEP) tools aids in bridging this divided by providing user-friendly guidelines for commonly applied analysis techniques. The presented functionalities allow for establishing a baseline for data processing of various measurements in the field of forest ecology and tree physiology and supports comparability between case studies, facilitating robust, transparent, and reproducible large-scale syntheses of patterns.
+In dendroecology and ecophysiology, many tasks are in one way or another related to timeseries data curation and processing.
+Yet, although a plethora of freely available analysis techniques exist in the form of R scripts and packages, a persistent gap remains between their availability and implementation. 
+The <u>DEEP</u> toolbox aids in bridging this divide by providing user-friendly guidelines and broadly applicable custom R code for common analyses.
+The presented functionalities together form a baseline for the processing and analysis of various types of measurements, including tree-ring parameters, dendrometer and sap-flow measurements, eddy-covariance data, or gridded climate and Earth observations.
+We encourage our peers to use and enrich this baseline, which will increase the comparability between studies, as well as facilitate robust, transparent, and reproducible large-scale syntheses or meta-analyses.
 
 
-Welcome to the **personal demo** of Academic. Other demos available include:
+<br>
 
-- [**Project Demo** (Academic's actual site)](https://sourcethemes.com/academic/)
 
-**Over 100,000 [Amazing Websites](https://sourcethemes.com/academic/#expo) have Already Been Built with Academic**
-
-**[Join](https://sourcethemes.com/academic/docs/install/) the Most Empowered Hugo Community**
 
 {{% alert note %}}
-This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [*Blank* widget](https://sourcethemes.com/academic/docs/widgets/).
 
-Backgrounds can be applied to any section. Here, the *background* option is set give an *image parallax* effect.
+If you want to become a member and contribute, get in touch [here](/#contact).
+
 {{% /alert %}}
+
+<br>

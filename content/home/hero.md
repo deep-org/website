@@ -47,9 +47,9 @@ title = "<u>D</u>endro-<u>e</u>cology and <u>E</u>co-<u>p</u>hysiology"
   url = "mission/"
   label = "Read about our Mission"
 
-# Note. An optional note to show underneath the links.
-# [cta_note]
-#  label = '<a class="js-github-release" href="https://sourcethemes.com/academic/updates" data-repo="gcushen/hugo-academic">Latest release<!-- V --></a>'
+#Note. An optional note to show underneath the links.
+[cta_note]
+ label = "<a href='/#contact/' target='_self' rel='noopener'>Contact us to contribute</a>"
 +++
 
 <br>

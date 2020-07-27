@@ -80,6 +80,6 @@ ___
 ## Co-organizers
  
 - Christoforos Pappas (Université de Montréal)
-- Roman Zweifel (Swiss Federal Institute for Forest, Snow and Landscape Research WSL)
-- Kathy Steppe (Ghent University)
+- Roman Zweifel (Swiss Federal Institute for Forest, Snow and Landscape Research WSL; [personal page](https://www.wsl.ch/de/mitarbeitende/zweifel.html))
+- Kathy Steppe (Ghent University; [personal page](https://www.plantecology.ugent.be/people/))
 - Alexander Hurley (GFZ)

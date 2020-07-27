@@ -50,7 +50,7 @@ right <-  function (string, char){substr(string,nchar(string)-(char-1),nchar(str
 
 
 
-## 3. Importa data (L0)
+## 3. Import data (L0)
 
 Raw dendrometer and temperature data can be provided as input. Providing temperature data is optional. 
 However, temperature data increases the quality of error detection and processing.
