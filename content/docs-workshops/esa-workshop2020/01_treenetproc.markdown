@@ -799,5 +799,8 @@ citation("treenetproc")
 - Pappas C, Peters RL, Fonti P (2020) Linking variability of tree water use and growth with species resilience to environmental changes. Ecography. 43: 1-14.
 - Knüsel S, Haeni M, Wilhelm M, Peters RL, Zweifel R (2020) treenetproc: towards a standardized processing of stem radius data. In prep.
 - Zweifel R, Haeni M, Buchmann N, Eugster W (2016) Are trees able to grow in periods of stem shrinkage? New Phytol. 211:839-49.
-- See also: https://rdrr.io/github/treenet/treenetproc/f/vignettes/Introduction-to-treenetproc.Rmd
+
+**See also:**
+- [`treenetproc` package vignette](https://rdrr.io/github/treenet/treenetproc/f/vignettes/Introduction-to-treenetproc.Rmd)
+- [The Lötschental tree-growth monitoring transect](https://www.wsl.ch/en/tree-ring-research/the-loetschental-tree-growth-monitoring-transect.html)
 
