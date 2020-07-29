@@ -16,7 +16,7 @@ toc: true
 
 
 ## 1. Background
-The package TREX provides functionalities for thermal dissipation sap flow data pre- and post-processing.
+The package `TREX` (**tr**ee sapflow **ex**tractor) provides functionalities for thermal dissipation sap flow data pre- and post-processing.
 More specifically, raw sap flow data (expressed as temperature or voltage differences) can be:
 
 - visually inspected and outliers can be identified and removed (manual and automatic detection),
