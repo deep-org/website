@@ -456,7 +456,7 @@ lines(data = dendro_data_L2_notemp, value ~ ts, col = "#08519c")
 
 <img src="/docs-workshops/esa-workshop2020/01_treenetproc_files/figure-html/temp-adjust-1.png" width="1600" />
 
-**Figure**: *The sample temperature dataset does not assume frost after the end of February, therefore many values during the frost shrinkage are classified as outliers and deleted.*
+**Figure:** *The sample temperature dataset does not assume frost after the end of February, therefore many values during the frost shrinkage are classified as outliers and deleted.*
 
 ### Manual corrections
 
@@ -488,7 +488,7 @@ dendro_data_L2 <- proc_dendro_L2(dendro_L1 = dendro_data_L1,
 ![](/docs-workshops/esa-workshop2020/01_treenetproc_files/proc_dendro_L2.png)
 
 
-**Figure** *See previous examples above for detailed description.*
+**Figure:** *See previous examples above for detailed description.*
 
 
 The following error remained after data cleaning:  
