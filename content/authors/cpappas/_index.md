@@ -15,13 +15,14 @@ education:
     year: 2008
 email: ""
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Forest ecohydrology
+- Carbon and water cycles under climate change
+- Boreal forest under climate change
+- Tree hydraulics and growth
 organizations:
-- name: Stanford University
-  url: ""
-role: Professor of Artificial Intelligence
+- name: Centre d’étude de la forêt, Université du Québec à Montréal, and Département Science et Technologie, Téluq, Université du Québec
+  url: "http://www.cef-cfr.ca/"
+role: Research associate and SmartForests Canada science coordinator
 social:
 - icon: envelope
   icon_pack: fas
@@ -31,10 +32,10 @@ social:
   link: https://twitter.com/GeorgeCushen
 - icon: google-scholar
   icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.com/citations?user=005614oAAAAJ&hl=en
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/PappasChristoforos
 superuser: true
 title: Christoforos Pappas
 user_groups:
@@ -42,6 +43,4 @@ user_groups:
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
