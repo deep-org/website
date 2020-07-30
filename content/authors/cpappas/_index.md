@@ -8,7 +8,7 @@ education:
     institution: ETH Zurich, Zurich, Switzerland
     year: 2014
   - course: Diploma degree in Civil Engineering
-    institution: Massachusetts Institute of Technology
+    institution: National Technical University of Athens, Athens, Greece
     year: 2010
 email: ""
 interests:
