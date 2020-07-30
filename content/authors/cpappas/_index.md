@@ -16,8 +16,8 @@ education:
 email: ""
 interests:
 - Forest ecohydrology
-- Carbon and water cycles under climate change
-- Boreal forest under climate change
+- Land-atmosphere interactions
+- Boreal forest
 - Tree hydraulics and growth
 organizations:
 - name: Centre d’étude de la forêt, Université du Québec à Montréal, and Département Science et Technologie, Téluq, Université du Québec
