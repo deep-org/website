@@ -13,9 +13,8 @@ education:
 email: ""
 interests:
 - Forest ecohydrology
-- Land-atmosphere interactions
-- Boreal forest
-- Tree hydraulics and growth
+- Forest resilience and climate change
+- Tree ecophysiology
 organizations:
 - name: Centre d’étude de la forêt, Université du Québec à Montréal, and Département Science et Technologie, Téluq, Université du Québec
   url: "http://www.cef-cfr.ca/"
