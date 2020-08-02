@@ -68,8 +68,8 @@ Data files and codes for this workshop will be made publicly available, so parti
 
 ___
 
-Follow this [**link**](/docs-workshops/esa-workshop2020) to view the course materials.
-
+- Follow this [**link**](https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2020/WK%2021%20-%20Advanced%20Analyses%20of%20Tree%20Physiological%20Time%20Series%20in%20R%20and%20PhytoSim.pdf) for a presentation introducing the workshop.
+- Follow this [**link**](/docs-workshops/esa-workshop2020) to view the course materials.
 ___
 
 
@@ -79,7 +79,7 @@ ___
 
 ## Co-organizers
  
-- Christoforos Pappas (Université de Montréal)
+- Christoforos Pappas (Centre d’étude de la forêt, Université du Québec à Montréal & Téluq)
 - Roman Zweifel (Swiss Federal Institute for Forest, Snow and Landscape Research WSL; [personal page](https://www.wsl.ch/de/mitarbeitende/zweifel.html))
 - Kathy Steppe (Ghent University; [personal page](https://www.plantecology.ugent.be/people/))
 - Alexander Hurley (GFZ)

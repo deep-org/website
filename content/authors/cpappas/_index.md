@@ -1,7 +1,7 @@
 ---
 authors:
 - cpappas
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include forest ecohydrology, tree ecophysiology, Ecosystem resilience and climate change.
 education:
   courses:
   - course: PhD in Environmental Engineering
@@ -36,8 +36,7 @@ superuser: true
 title: Christoforos Pappas
 user_groups:
 - Founders
-- Researchers
-- Visitors
+
 ---
 
 

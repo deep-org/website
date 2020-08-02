@@ -29,7 +29,7 @@ More specifically, raw sap flow data (expressed as temperature or voltage differ
 - zero-flow conditions can be derived using a wealth of well-established approaches,
 - sap flow rates can be estimated using either literature- or user-specific calibration parameters for the thermal dissipation method,
 - uncertainty of sap flow estimates stemming from parameter choices can be assessed,
-- tree ecophysiologial responses to environmental drivers can be derived (e.g., crown conductance vs vapor pressure deficit relations) .
+- tree ecophysiologial responses to environmental drivers can be derived (e.g., crown conductance vs vapor pressure deficit relations).
 
 
 
