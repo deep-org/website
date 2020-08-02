@@ -1,6 +1,6 @@
 ---
 # Display name
-title: DEEP-org
+title: DEEP Team
 
 # Username (this should match the folder name)
 authors:
@@ -10,12 +10,12 @@ authors:
 superuser: true
 
 # Role/position
-role: CEO
+role: Management
 
 # Organizations/Affiliations
 organizations:
 - name: DEEP-org
-  url: ""
+  url: "/#hero"
 
 
 # Social/Academic Networking
@@ -28,7 +28,7 @@ social:
   link: '#contact'  # For a direct email link, use "mailto:test@example.org".
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/dendroecophys
 - icon: github
   icon_pack: fab
   link: https://github.com/deep-org

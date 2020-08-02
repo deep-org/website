@@ -1,10 +1,6 @@
 ---
 authors:
-- cpappas
-- sklesse
-- rpeters
-- fbabst
-- ahurley
+- admin
 categories:
 - News
 date: "2020-08-01T00:00:00Z"
