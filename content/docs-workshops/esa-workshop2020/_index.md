@@ -20,7 +20,7 @@ To resolve such issues, software tools are continuously being developed, facilit
 
 ![](https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2020/Sap%20flow%20gif-min.gif)
 
-> A presentation introducing the workshop can be downloaded [here](https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2020/WK%2021%20-%20Advanced%20Analyses%20of%20Tree%20Physiological%20Time%20Series%20in%20R%20and%20PhytoSim.pdf)
+> A presentation introducing the workshop can be downloaded [here](https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2020/WK%2021%20-%20Advanced%20Analyses%20of%20Tree%20Physiological%20Time%20Series%20in%20R%20and%20PhytoSim.pdf).
 
 Within this workshop we provide participants hands-on training on novel software tools: R packages to process dendrometer and sap flow data, and PhytoSim models to integrate data and unravel underlying mechanisms.
 Dendrometer functionalities include the option to align measurements to regular time intervals, remove outliers and correct for data-jumps.

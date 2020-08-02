@@ -44,7 +44,7 @@ The radial flow rate into and out of the stem storage compartment is represented
 This radial water flow (bold arrow) establishes the direct link between the sub-model for calculating dynamic water transport and the sub-model for predicting stem diameter variations.
 Depending on the value of the pressure potential in the stem storage compartment, the stem diameter variation resulting from turgor-driven growth is included. 
 
-> A tutorial on the application of the STACI model can be downloaded [here](https://github.com/deep-org/workshop_data/blob/master/esa-workshop2020/PhytoSim/ESA2020_PhytoSim.zip).
+> A tutorial on the application of the STACI model can be downloaded [here](https://github.com/deep-org/workshop_data/raw/master/esa-workshop2020/PhytoSim/ESA2020_PhytoSim.zip).
 
 
 ![](/docs-workshops/esa-workshop2020/03_phytosim_files/staci.png)
