@@ -22,7 +22,7 @@ role: Research associate and SmartForests Canada science coordinator
 social:
 - icon: envelope
   icon_pack: fas
-  link: 'christoforos.pappas@umontreal.ca'
+  link: 'mailto:christoforos.pappas@umontreal.ca?subject=DEEP Question'
 - icon: researchgate
   icon_pack: ai
   link: https://www.researchgate.net/profile/Christoforos_Pappas

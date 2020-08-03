@@ -804,3 +804,6 @@ citation("treenetproc")
 - [`treenetproc` package vignette](https://rdrr.io/github/treenet/treenetproc/f/vignettes/Introduction-to-treenetproc.Rmd)
 - [The Lötschental tree-growth monitoring transect](https://www.wsl.ch/en/tree-ring-research/the-loetschental-tree-growth-monitoring-transect.html)
 
+## 9. Contact
+
+For questions, please get in touch with <a href="mailto:Richard.Peters@UGent.be?subject=ESA 2020 - treenetproc">Richard Peters</a>

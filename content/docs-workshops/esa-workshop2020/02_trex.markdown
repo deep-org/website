@@ -25,6 +25,8 @@ More specifically, raw sap flow data (expressed as temperature or voltage differ
 - uncertainty of sap flow estimates stemming from parameter choices can be assessed,
 - tree ecophysiologial responses to environmental drivers can be derived (e.g., crown conductance vs vapor pressure deficit relations).
 
+For more details, visit the dedicated [`TREX` website](https://the-hull.github.io/TREX/index.html)
+
 
 
 
@@ -150,7 +152,6 @@ plot(sensor_raw_1h, main="hourly raw sap flow data (mV)")
 <img src="/docs-workshops/esa-workshop2020/02_trex_files/figure-html/unnamed-chunk-3-1.png" width="1600" />
 
 ```r
-
 # make a data.frame
 sensor_raw_1h_df <- data.frame(timestamp = ymd_hms(index(sensor_raw_1h), tz="GMT"), value = coredata(sensor_raw_1h))
 
@@ -161,7 +162,7 @@ vpd_15min <- is.trex(vpd,
                     long.deg=7.7459,
                     ref.add=FALSE,
                     df=FALSE)
-
+# vpd data
 vpd_1h <- dt.steps(input=vpd_15min,
                   start = "2012-05-01 00:00:00",
                   end = "2015-10-31 23:30:00",
@@ -175,8 +176,7 @@ plot(vpd_1h, main="hourly VPD data (kPa)")
 <img src="/docs-workshops/esa-workshop2020/02_trex_files/figure-html/unnamed-chunk-3-2.png" width="1600" />
 
 ```r
-
-
+# radiation data
 rad_15min <- is.trex(rad,
                     tz="GMT",
                     time.format="%Y-%m-%d %H:%M:%S",
@@ -198,7 +198,7 @@ plot(rad_1h, main="hourly radiation data (W m-2)")
 <img src="/docs-workshops/esa-workshop2020/02_trex_files/figure-html/unnamed-chunk-3-3.png" width="1600" />
 
 ```r
-
+# precip data
 prc_1day <- is.trex(prc,
                    tz="GMT",
                    time.format="%Y-%m-%d",
@@ -242,7 +242,6 @@ plot(sensor_raw_1h, main="hourly raw sap flow data (mV)")
 <img src="/docs-workshops/esa-workshop2020/02_trex_files/figure-html/unnamed-chunk-4-1.png" width="1600" />
 
 ```r
-
 # zoom-in to a shorter time period
 plot(window(sensor_raw_1h, start = "2015-03-01 00:00:00", end = "2015-05-01 00:00:00"), main="March - April 2015; hourly raw sap flow data (mV)")
 ```
@@ -250,7 +249,6 @@ plot(window(sensor_raw_1h, start = "2015-03-01 00:00:00", end = "2015-05-01 00:0
 <img src="/docs-workshops/esa-workshop2020/02_trex_files/figure-html/unnamed-chunk-4-2.png" width="1600" />
 
 ```r
-
 # create an object with the period of interest, i.e.,  March - April 2015
 tocheck <- window(sensor_raw_1h, start = "2015-03-01 00:00:00", end = "2015-05-01 00:00:00")
 
@@ -303,7 +301,6 @@ legend("bottomright", c("raw", "outlier-free"),
 <img src="/docs-workshops/esa-workshop2020/02_trex_files/figure-html/unnamed-chunk-4-3.png" width="1600" />
 
 ```r
-       
 # convert time stamp to character
 sensor_raw_1h_df_clean$timestamp <- as.character(sensor_raw_1h_df_clean$timestamp)   
 ```
@@ -713,3 +710,12 @@ citation("TREX")
 ## 10. References
 
 - Richard Peters, Christoforos Pappas and Alexander Hurley (2020). TREX: TRree sap flow EXtractor. R package version 0.0.0.9000. https://the-hull.github.io/TREX/
+
+## 11. Contact
+
+For questions, please get in touch with <a href="mailto:christoforos.pappas@umontreal.ca?subject=ESA 2020 - TREX">Chris Pappas</a>
+
+
+___ 
+
+For questions, please get in touch with [Chris Pappas]

@@ -64,5 +64,9 @@ This can be used to demonstrate the sensitivity of trees to changing weather con
 - Steppe K, Sterck F, Deslauriers A. (2015) Diel growth dynamics in tree stems: Linking anatomy and ecophysiology. Trends in Plant Science 20: 335-343.
 - Steppe K, von der Crone JS, De Pauw DJW. (2016) TreeWatch.net: A Water and Carbon Monitoring and Modeling Network to Assess Instant Tree Hydraulics and Carbon Status. Frontiers in Plant Science 7: 1-8.
 
+## 5. Contact
+
+For questions, please get in touch with <a href="mailto:kathy.steppe@UGent.be?subject=ESA 2020 - PhytoSim">Kathy Steppe</a>
+
 
 
