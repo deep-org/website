@@ -716,6 +716,4 @@ citation("TREX")
 For questions, please get in touch with <a href="mailto:christoforos.pappas@umontreal.ca?subject=ESA 2020 - TREX">Chris Pappas</a>
 
 
-___ 
 
-For questions, please get in touch with [Chris Pappas]
