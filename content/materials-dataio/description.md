@@ -1,15 +1,19 @@
 +++
+# A Demo section created with the Blank widget.
+# Any elements can be added in the body: https://sourcethemes.com/academic/docs/writing-markdown-latex/
+# Add more sections by duplicating this file and customizing to your requirements.
+
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 25  # Order that this section will appear.
+weight = 20  # Order that this section will appear.
 
-title = "Measurements"
-subtitle = "Techniques for typical DEEP data,<br> like tree rings, sap flow and dendrometer measurements"
+title = ""
+subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "2"
+  columns = "1"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -47,19 +51,4 @@ subtitle = "Techniques for typical DEEP data,<br> like tree rings, sap flow and 
 +++
 
 
-The range of user-specific choices (e.g., parameter values) applied during data processing between studies represents a key challenge for homogenising and synthesising time-series measurements, among others.
-We are collating and providing approaches for processing various measurements in tutorials.
-These can serve either as a starting point for your own bespoke analyses, or be used as a standardized protocol.
-
-<a href='/materials-measurements/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
-
-Examples and protocols (will) include measurements from:
-
-- Tree rings
-- Wood anatomy
-- Dendrometers
-- Sap flow
-- Flux analyses
-
-
-<br>
+We generate and source data from multiple sources and types, and process it with (open-source) tools, in some cases custom-made by the [DEEP-Team](/mission/#people).

@@ -3,11 +3,11 @@
 # This section displays recent blog posts from `content/post/`.
 
 widget = "pages"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
-weight = 60  # Order that this section will appear.
+headless = false  # This file represents a page section.
+active = true  # Activate this widget? true/false
+weight = 30  # Order that this section will appear.
 
-title = "Recent Posts"
+title = "Tutorials"
 subtitle = ""
 
 [content]
@@ -25,8 +25,8 @@ subtitle = ""
 
   # Filter posts by a taxonomy term.
   [content.filters]
-    tag = ""
-    category = "News"
+    tag = "Tutorial"
+    category = "Measurements"
     publication_type = ""
     author = ""
     exclude_featured = false

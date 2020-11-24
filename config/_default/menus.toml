@@ -7,7 +7,7 @@
 #  name = "Home"
 #  url = "#hero"
 #  weight = 10
-  
+
 #[[main]]
 #  name = "About"
 #  url = "mission/"
@@ -17,26 +17,26 @@
   name = "About"
   weight = 20
   identifier = "About"
-  
+
 [[main]]
   name = "Mission"
   url = "mission/"
   weight = 10
   parent = "About"
-  
+
 [[main]]
   name = "People"
   url = "mission/#people"
   weight = 20
   parent = "About"
-  
-  
+
+
 
 #[[main]]
 #  name = "People"
 #  url = "#people"
 #  weight = 30
-  
+
 #[[main]]
 #  name = "Courses"
 #  url = "courses/"
@@ -47,31 +47,31 @@
   url = "materials/"
   weight = 40
   identifier = "mats"
-  
+
 [[main]]
   name = "Overview"
   url = "materials/"
   weight = 5
-  parent = "mats"  
-  
+  parent = "mats"
+
 [[main]]
   name = "Data Handling"
-  url = "docs-dataio/"
+  url = "materials-dataio/"
   weight = 10
   parent = "mats"
-  
+
 [[main]]
   name = "General Statistics"
-  url = "docs-stats/"
+  url = "materials-stats/"
   weight = 20
   parent = "mats"
-  
+
 [[main]]
   name = "Measurements"
-  url = "docs-measurements/"
+  url = "materials-measurements/"
   weight = 30
   parent = "mats"
-  
+
   [[main]]
   name = "Workshops"
   url = "#workshops"
@@ -103,7 +103,7 @@
 #  weight = 40
 
 
-  
+
 
 
 # Link to a PDF of your resume/CV from the menu.

@@ -19,11 +19,11 @@ subtitle = "Spatial and temporal analyses, hierarchical modelling"
 
   # Background color.
   # color = "navy"
-  
+
   # Background gradient.
   # gradient_start = "DeepSkyBlue"
   # gradient_end = "SkyBlue"
-  
+
   # Background image.
   # image = "headers/bubbles-wide.jpg"  # Name of image in `static/img/`.
   # image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
@@ -39,19 +39,19 @@ subtitle = "Spatial and temporal analyses, hierarchical modelling"
   padding = ["20px", "0", "20px", "0"]
 
 [advanced]
- # Custom CSS. 
+ # Custom CSS.
  css_style = ""
- 
+
  # CSS class.
  css_class = ""
 +++
 
-Statistical analysis is "at the heart" performing hypothesis-driven research in the field of forest ecology and eco-physiology. 
+Statistical analysis is "at the heart" performing hypothesis-driven research in the field of forest ecology and eco-physiology.
 With the ever increasing amount of available analyses techniques, clear guidance is needed to avoid common mistakes in data analysis and interpretation.
 Here we provide guidance on applying general statistical analyses on both spatial and temporally specific data.
 Moreover, uncertainty analyses and mixed-effect modelling frameworks are provided.  
 
-<a href='/docs-stats/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
+<a href='/materials-stats/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
 
 Examples (will) include:
 

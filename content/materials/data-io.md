@@ -23,11 +23,11 @@ subtitle = "Methods for wrangling and cleaning DEEP and environmental data"
 
   # Background color.
   # color = "navy"
-  
+
   # Background gradient.
   # gradient_start = "DeepSkyBlue"
   # gradient_end = "SkyBlue"
-  
+
   # Background image.
   # image = "headers/bubbles-wide.jpg"  # Name of image in `static/img/`.
   # image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
@@ -43,9 +43,9 @@ subtitle = "Methods for wrangling and cleaning DEEP and environmental data"
   padding = ["20px", "0", "20px", "0"]
 
 [advanced]
- # Custom CSS. 
+ # Custom CSS.
  css_style = ""
- 
+
  # CSS class.
  css_class = ""
 +++
@@ -54,7 +54,7 @@ subtitle = "Methods for wrangling and cleaning DEEP and environmental data"
 Valuable initiatives are currently collecting global databases of important tree physiological parameters, which could be utilized within a plethora of relevant forest ecological and tree physiological research activities. The task at hand is to identify the “hotspots” of data platforms and the means to access and process the data, which is often not a straightforward task. Here we provide support for importing global, regional and site-specific data covering climatic, physiological and allometric measurements.  
 
 
-<a href='/docs-dataio/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
+<a href='/materials-dataio/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
 
 
 Examples (will) include:
@@ -66,5 +66,3 @@ Examples (will) include:
 
 
 <br>
-
-
