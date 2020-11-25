@@ -50,5 +50,4 @@ subtitle = ""
  css_class = ""
 +++
 
-
-We apply statistical methods to explore data and infer relationships.
+Statistical analysis is “at the heart” of performing hypothesis-driven research in the field of forest ecology and eco-physiology. With the ever increasing amount of available analyses techniques, clear guidance is needed to avoid common mistakes in data analysis and interpretation. Here we provide guidance on applying general statistical analyses on both spatial and temporally specific data. Moreover, uncertainty analysis and mixed-effect modelling frameworks are presented. We do not intend to explain basic statistical theory or model assumption testing, as more dedicated protocols and platforms exist, but rather highlight means of utilizing existing statistical tools in a dendro-ecological and eco-physiological context.

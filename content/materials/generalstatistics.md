@@ -46,18 +46,8 @@ subtitle = "Spatial and temporal analyses, hierarchical modelling"
  css_class = ""
 +++
 
-Statistical analysis is "at the heart" performing hypothesis-driven research in the field of forest ecology and eco-physiology.
-With the ever increasing amount of available analyses techniques, clear guidance is needed to avoid common mistakes in data analysis and interpretation.
-Here we provide guidance on applying general statistical analyses on both spatial and temporally specific data.
-Moreover, uncertainty analyses and mixed-effect modelling frameworks are provided.  
+Statistical analysis is “at the heart” of performing hypothesis-driven research in the field of forest ecology and eco-physiology. With the ever increasing amount of available analyses techniques, clear guidance is needed to avoid common mistakes in data analysis and interpretation. Here we provide guidance on applying general statistical analyses on both spatial and temporally specific data. Moreover, uncertainty analysis and mixed-effect modelling frameworks are presented. We do not intend to explain basic statistical theory or model assumption testing, as more dedicated protocols and platforms exist, but rather highlight means of utilizing existing statistical tools in a dendro-ecological and eco-physiological context.
 
 <a href='/materials-stats/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
-
-Examples (will) include:
-
-- Variability decay
-- Spatial analyses (PCA, Spatial auto-correlation, cluster analyses)
-- Mixed-effect modelling (PSME)
-- Uncertainty analysis (using [`TREX`](https://the-hull.github.io/TREX/index.html), tree ring uncertainties)  
 
 <br>

@@ -8,12 +8,8 @@ categories:
   - Data Handling
 tags:
   - Tutorial
-  - Reproducibility
-  - Interactivity
-  - Wood anatomy
-  - Environmental data
-subtitle: 'Interactive, efficient and reproduicble data processing'
-summary: 'Ever more data is available to Earth System scientists - exploring, cleaning and curating it in a reproducible manner can be done efficiently and conveniently with interactive tools such as datacleanr. Learn how to use it for quantitative wood anatomy, as well as for environmental data in a guided tutorial.'
+subtitle: 'something'
+summary: 'something more'
 lastmod: '2020-11-23T15:04:33+01:00'
 featured: no
 image:
@@ -24,27 +20,7 @@ image:
 projects: []
 ---
 
-```{r, setup, include=FALSE}
-knitr::opts_chunk$set(fig.width = 8, collapse = TRUE, echo = TRUE, eval = FALSE)
 
-
-# save the built-in output hook
-hook_output <- knitr::knit_hooks$get("output")
-
-# set a new output hook to truncate text output
-knitr::knit_hooks$set(output = function(x, options) {
-  if (!is.null(n <- options$out.lines)) {
-    x <- xfun::split_lines(x)
-    if (length(x) > n) {
-      # truncate the output
-      x <- c(head(x, n), "....\n")
-    }
-    x <- paste(x, collapse = "\n")
-  }
-  hook_output(x, options)
-})
-
-```
 
 
 
@@ -64,31 +40,32 @@ knitr::knit_hooks$set(output = function(x, options) {
 Here we introduce `datacleanr`, a recently developed app.
 Itis a flexible and efficient tool for **interactive** data cleaning, and is inherently interoperable, as it seamlessly integrates into **reproducible** data analyses pipelines in `R`.
 It can deal with nested **tabular**, as well as **spatial** and **time series** data.
-We present how to use the app and show two use-cases - one for processing **wood anatomical data** and one for environmental data (soil respiration - $CO_2$ flux).
+We present how to use the app and show two use-cases - one for processing **wood anatomical data** and one for environmental data (soil respiration - `\(CO_2\)` flux).
 Detailed documentation and examples can be found [here](https://the-hull.github.io/datacleanr) on the app's website.
 
-# Installation
+# Installation 
 
 The latest release on CRAN can be installed using:
 
-```{r eval = FALSE}
+
+```r
 # also installing dplyr for later use
 packages <- (c("datacleanr", "dplyr", "RAPTOR"))
-install.packages(setdiff(packages,
+install.packages(setdiff(packages, 
                          rownames(installed.packages())))
 
 library(datacleanr)
 library(dplyr)
-
 
 ```
 
 
 You can install the development version of `datacleanr`  with:
 
-``` {r eval = FALSE}
+
+```r
 packages <- (c("remotes"))
-install.packages(setdiff(packages,
+install.packages(setdiff(packages, 
                          rownames(installed.packages())))
 
 remotes::install_github("the-hull/datacleanr")
@@ -115,30 +92,32 @@ Note, maps require columns `lon` and `lat` (X and Y) in decimal degrees in the d
 ## Additional features
 
 - **Grouping**: the grouping defined in the "Set-up and Overview" tab is carried forward through the app. These groups can be used to cycle through nested/granular data, and considerably speed up exploration and cleaning. These groups are also available for filtering (Filtering tab), where filter expressions can be scoped to group level (i.e. no groups, individual, all groups).
-- **Interoperability**:
+- **Interoperability**: 
   when a logical (`TRUE`\\`FALSE`) column named `.dcrflag` is present, corresponding observations are rendered with different symbols in plots and maps. Use this feature to validate or cross-check external quality control or outlier flagging methods.
 - **Batching**:
-  If data sets are too large, or too deeply nested (e.g. individual, plot, site, region, etc.), we recommend a split-combine approach to expedite the processing.
+  If data sets are too large, or too deeply nested (e.g. individual, plot, site, region, etc.), we recommend a split-combine approach to expedite the processing. 
+  
 
-```{r eval = FALSE}
-iris_split <- split(iris, iris$Species)
+```r
+iris_split <- split(iris, iris$Species) 
 
-output <- lapply(iris_split,
+output <- lapply(iris_split, 
        dcr_app)
 
 ```
-
+  
 
 
 # Using `datacleanr` with Wood Anatomical Measurements
 
-`RAPTOR` is a powerful tool to assimilate and generate cell-level measurements of coniferous, woody plants.
-It will serve as the basis to generate a dataset, which we will subsequently clean.
+`RAPTOR` is a powerful tool to assimilate and generate cell-level measurements of coniferous, woody plants. 
+It will serve as the basis to generate a dataset, which we will subsequently clean. 
 More details on `RAPTOR` can be found in [Peters *et al.* (2018)](https://doi.org/10.1016/j.dendro.2017.10.003) and in the dedicated DEEP tutorial [here](/2020/11/23/raptor-intro/).
 
-First, we
+First, we 
 
-```{r}
+
+```r
 
 library(RAPTOR)
 
@@ -147,14 +126,14 @@ input <- is.raptor(example.data(species = "MOUNT_PINUS"),
                    str = FALSE)
 # rotate annual rings where necessary
 # so that detection algorithms can operate seamlessly
-aligned <- align(input,
+aligned <- align(input, 
                  list = c("h", "h", "h", 0.03),
                  make.plot = FALSE)
 
 # identify first cell in every annual ring
 first <- first.cell(aligned,
                     frac.small = 0.2,
-                    yrs = FALSE,
+                    yrs = FALSE, 
                     make.plot = FALSE)
 
 # identify all cells along radial files,
@@ -164,7 +143,6 @@ output <- pos.det(first,
   prof.co = 1.7, max.cells = 0.7, yrs = FALSE, aligning = FALSE, make.plot = TRUE
 )
 
-
 ```
 
 The `output` can be used directly in `datacleanr`, but a few additional steps make the subsequent processing considerably more efficient.
@@ -172,18 +150,19 @@ Through `RAPTOR`'s alignment process, all rings are assumed to originate on a pl
 causing overlap during plotting.
 We will add space out the individual rings, and add factors for grouping, which will be used to visualize years and rows individually.
 
-```{r}
+
+```r
 
 # grab maximum YCAL location and add a buffer for convenience
 # this is used to space out rings below
 buffer <- 100
-max_ring_size <- output %>%
-  group_by(YEAR) %>%
-  summarize(max_length = max(YCAL, na.rm = TRUE) + buffer) %>%
+max_ring_size <- output %>% 
+  group_by(YEAR) %>% 
+  summarize(max_length = max(YCAL, na.rm = TRUE) + buffer) %>% 
   mutate(cumulative_year_length = cumsum(max_length))
 
-output_dcr <- output %>%
-  left_join(max_ring_size) %>%
+output_dcr <- output %>% 
+  left_join(max_ring_size) %>% 
   mutate(YEAR_dcr = as.factor(YEAR),
          # leverage RAPTOR's row identification
          ROW_dcr = as.factor(ifelse(is.na(ROW), "00",ROW )),
@@ -191,7 +170,6 @@ output_dcr <- output %>%
          YCAL_dcr =  YCAL + cumulative_year_length)
 
 datacleanr::dcr_app(output_dcr)
-
 
 ```
 
@@ -202,11 +180,12 @@ datacleanr::dcr_app(output_dcr)
 
 
 **COSORE** is a community-driven soil respiration database, recently introduced with a manuscript published [here]( https://doi.org/10.1111/gcb.15353) by Bond-Lamberty *et al.*.
-The database provides soil respiration flux estimates, as well as meta data across multiple data sets.
+The database provides soil respiration flux estimates, as well as meta data across multiple data sets. 
 Let's explore!
 
 
-```{r eval = FALSE}
+
+```r
 
 
 remotes::install_github("bpbond/cosore")
@@ -230,7 +209,8 @@ datacleanr::dcr_app(anjilleli$data)
 
 **Explore nested data sets**:
 
-```{r eval = FALSE}
+
+```r
 # grab all data from ZHANG
 zhang <- cosore::csr_table("data", c("d20190424_ZHANG_maple",
                                         "d20190424_ZHANG_oak")) %>%
@@ -243,3 +223,5 @@ datacleanr::dcr_app(zhang)
 ```
 
 <img src="https://raw.githubusercontent.com/the-Hull/datacleanr/master/man/figures/readme_cosore.gif" width = "1000" align = "center"/>
+
+

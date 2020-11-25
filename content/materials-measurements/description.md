@@ -50,5 +50,4 @@ subtitle = ""
  css_class = ""
 +++
 
-
-We measure traits and process dynamics.
+The range of user-specific choices (e.g., parameter values) applied during data processing between studies represents a key challenge for homogenising and synthesising time-series measurements, among others. Common techniques used within forest ecology and eco-physiology include; tree ring, sap flow, dendrometer, wood anatomical and eddy covariance data analysis. Proper usage of state-of-the-art techniques in processing such data can support robust conclusions about the state of the forest water and carbon cycle and how these are affected by climate change. Here we provide step-by-step examples of several data-processing techniques required for obtaining relevant and reproducible output variables.

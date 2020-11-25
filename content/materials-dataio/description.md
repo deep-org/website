@@ -50,5 +50,6 @@ subtitle = ""
  css_class = ""
 +++
 
-
-We generate and source data from multiple sources and types, and process it with (open-source) tools, in some cases custom-made by the [DEEP-Team](/mission/#people).
+Valuable initiatives are currently collecting global databases of important tree physiological parameters, which could be utilized within a plethora of relevant forest ecological and tree physiological research activities.
+The task at hand is to identify the “hotspots” of data platforms and the means to access and process the data, which is often not a straightforward task. Here we provide support for importing global, regional and site-specific data covering climatic, physiological and allometric measurements.
+Moreover, interactive data formatting and curation procedures are presented which enhance data cleaning efficiency and reproducibility. The examples include data products provided in tabular `Excel`, `txt`, image-type /  raster and `netCDF` formats.

@@ -46,20 +46,8 @@ subtitle = "Techniques for typical DEEP data,<br> like tree rings, sap flow and 
  css_class = ""
 +++
 
-
-The range of user-specific choices (e.g., parameter values) applied during data processing between studies represents a key challenge for homogenising and synthesising time-series measurements, among others.
-We are collating and providing approaches for processing various measurements in tutorials.
-These can serve either as a starting point for your own bespoke analyses, or be used as a standardized protocol.
+The range of user-specific choices (e.g., parameter values) applied during data processing between studies represents a key challenge for homogenising and synthesising time-series measurements, among others. Common techniques used within forest ecology and eco-physiology include; tree ring, sap flow, dendrometer, wood anatomical and eddy covariance data analysis. Proper usage of state-of-the-art techniques in processing such data can support robust conclusions about the state of the forest water and carbon cycle and how these are affected by climate change. Here we provide step-by-step examples of several data-processing techniques required for obtaining relevant and reproducible output variables.
 
 <a href='/materials-measurements/' target='_self' rel='noopener' class='btn btn-link px-2 py-2'><i class='fas fa-arrow-circle-right pr-1' aria-hidden='true'></i>Go to material</a>
-
-Examples and protocols (will) include measurements from:
-
-- Tree rings
-- Wood anatomy
-- Dendrometers
-- Sap flow
-- Flux analyses
-
 
 <br>
