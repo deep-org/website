@@ -1,20 +1,20 @@
 ---
 title: Using TREX for reproducible and multi-method sap flow quantification
 author:
-  - rpeters
-authors: ["rpeters"]
+  - cpappas
+authors: ["cpappas"]
 date: '2020-11-23'
 slug: trex-intro
 categories:
   - Measurements
 tags:
-  - Tutorial
-  - Sap flow
-  - Uncertainty
-  - Correction
-  - Granier
+  - tutorial
+  - sap flow
+  - uncertainty
+  - correction
+  - granier
 subtitle: 'A workflow for TDM sap flow data processing'
-summary: 'TREX assimilate, process and analyse sap flow data from the thermal dissipation method (TDM). We showcase its features and introduce how generate method comparisons and uncertainty assessments.'
+summary: 'TREX assimilate, process and analyse sap flow data from the thermal dissipation method (TDM). We showcase its features and introduce how to generate method comparisons and uncertainty assessments.'
 lastmod: '2020-11-23T15:04:33+01:00'
 featured: no
 image:
@@ -52,6 +52,7 @@ knitr::knit_hooks$set(output = function(x, options) {
 })
 
 ```
+# TREX Workflow
 
 ## 1. Background
 The package `TREX` (**tr**ee sapflow **ex**tractor) provides functionalities for thermal dissipation sap flow data pre- and post-processing.

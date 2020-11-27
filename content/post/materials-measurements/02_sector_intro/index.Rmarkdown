@@ -3,17 +3,18 @@ title: Sectoral analyses of radial growth profiles (SECTOR)
 author:
   - rpeters
 authors: ["rpeters"]
-date: '2020-11-23'
+date: '2020-11-24'
 slug: sector-intro
 categories:
   - Measurements
 tags:
-  - Tutorial
-  - Wood anatomy
-  - Diffuse-porous
+  - tutorial
+  - wood anatomy
+  - diffuse-porous
+  - angiosperm
 subtitle: 'A workflow for diffuse-porous species'
 summary: 'We introduce SECTOR, an R script capable of applying a sectoral approach, where wood anatomical measurements obtained from ROXAS are automatically assigned to a specified sector (or bin), accounting for the ring shape and rotation. SECTOR also allows for automatically providing intra-annual data on key wood anatomical parameters, while correcting for gaps in the area of interest (i.e., caused by cracks due to cutting).'
-lastmod: '2020-11-23T15:04:33+01:00'
+lastmod: '2020-11-24T15:04:33+01:00'
 featured: no
 image:
   caption: 'Image credit: **R. Peters**'

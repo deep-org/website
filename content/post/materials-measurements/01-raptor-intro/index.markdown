@@ -8,7 +8,9 @@ slug: raptor-intro
 categories:
   - Measurements
 tags:
-  - Tutorial
+  - tutorial
+  - wood anatomy
+  - tracheids
 subtitle: 'Generating radial files and tracheidograms'
 summary: 'RAPTOR analyses wood cell anatomical data on spatially-explicit xylem (tracheids) datasets derived from thin sections of woody tissue. The package includes functions for visualisation, detection and alignment of continuous tracheid radial file (defined as rows) and individual tracheid position within an annual ring of coniferous species. This package is designed to be used with elaborate cell output.'
 lastmod: '2020-11-23T15:04:33+01:00'
@@ -52,9 +54,9 @@ library("tgram")
 The package's functions are to be executed sequentially:
 1) `is.raptor()`,
 2) `graph.cells()`,
-3) `align()`, 
+3) `align()`,
 4) `first.cell()`,
-5) `pos.det()`, 
+5) `pos.det()`,
 6) `write.output()`,
 7) `batch.mode()` is a convenient 'wrapper' function streamlining steps 1 through 6
 8) `anatomy.data` calls complimentary example data sets.
@@ -73,7 +75,7 @@ To provide positional output, `RAPTOR` requires input data to be formatted into 
 
 
 ```r
-#- examples provided with the package 
+#- examples provided with the package
 ?anatomy.data
 ```
 
@@ -85,7 +87,7 @@ The input data-frame must include six specific columns:
 - the cell lumen area (e.g., CA),
 - and the x- and y-coordinates of the centroid of the tracheid lumen (e.g., XCAL and YCAL).
 
-Commonly used software's provide the information on CID, CA (in `ROXAS` LA, which needs to be transformed), XCAL and YCAL, while the ID and YEAR can be added afterwards. 
+Commonly used software's provide the information on CID, CA (in `ROXAS` LA, which needs to be transformed), XCAL and YCAL, while the ID and YEAR can be added afterwards.
 These column names must either match the names mentioned above or columns have to be ordered according to the order presented here.
 
 
@@ -95,7 +97,7 @@ as.character(unique(anatomy.data[,"ID"]))
 ## [1] "LOT_PICEA"   "LOW_PINUS"   "SIB_LARIX"   "MOUNT_PINUS"
 ```
 
-For this example we will use the Scots pine (*Pinus sylvestris*) example from the Eastern lowlands in Germany (named: "LOW_PINUS"), collected using the ROXAS software. 
+For this example we will use the Scots pine (*Pinus sylvestris*) example from the Eastern lowlands in Germany (named: "LOW_PINUS"), collected using the ROXAS software.
 
 
 ```r
@@ -133,7 +135,7 @@ summary(input_raw)
 ##                                     NA's   :5
 ```
 
-The data illustrates that the lumen area is on average 504 square micron, while mean cell wall thickness is 4.7 micron. 
+The data illustrates that the lumen area is on average 504 square micron, while mean cell wall thickness is 4.7 micron.
 
 
 ```r
@@ -146,7 +148,7 @@ stats::aggregate(input_raw[,c(4,7)],by=list(input_raw$YEAR),mean,na.rm=T)
 ## 4    2010 588.9568 4.417276
 ```
 
-This table illustrates that cell wall thickness (CWTALL) is slowly decreasing, while lumen area (or cell area, CA) is increasing. 
+This table illustrates that cell wall thickness (CWTALL) is slowly decreasing, while lumen area (or cell area, CA) is increasing.
 
 ## 4. Data verification and visualization
 The user can verify if a data-frame fits the requirements for RAPTOR data format by using the function is.raptor().
@@ -181,7 +183,7 @@ graph.cells(data,year=2009)
 </div>
 
 One can also plot the data interactively by using `interact = TRUE` as an additional argument in `graph.cells()`.
-The numbers within the grey cells indicate the CID provided wtihin RAPTOR file, which shows that CID 9317, 9499, 9542, 9557 and 9679 are cell not part of a potential full row. 
+The numbers within the grey cells indicate the CID provided wtihin RAPTOR file, which shows that CID 9317, 9499, 9542, 9557 and 9679 are cell not part of a potential full row.
 
 
 ```r
@@ -196,7 +198,7 @@ legend("topleft",c("Cells","Outliers"),pch=16,col=c("black","orange"),bty="n")
 
 <img src="/post/materials-measurements/01-raptor-intro/index_files/figure-html/unnamed-chunk-11-1.png" width="768" />
 
-First on can see that the X- and Y-axis are scaled to the minimum values within graph.cells(). 
+First on can see that the X- and Y-axis are scaled to the minimum values within graph.cells().
 Second the orange cells indeed appear to be outliers and can to be removed to improve the row detection.
 
 
@@ -244,7 +246,7 @@ pos.det(first, swe = 0.7, sle = 3, ec = 1.75, swl = 0.5, sll = 5, lc = 10,
 
 
 It is clear that some of the rows are not correctly detected due to the rotation of the sample (as some boxes are not filled with numbers).
-A rotation of the sample is thus required to improve the row detection. 
+A rotation of the sample is thus required to improve the row detection.
 
 
 ```r
@@ -326,8 +328,8 @@ Before running this function one should carefully study the multitude of paramet
 By looping through each identified first-row cell, this function uses another algorithm to identify the next sequential tracheid in the radial file.
 The algorithm is instructed by user-defined "earlywood" and "latewood" variables, dependent on the anatomical characteristics of the wood sample (cf. package description).
 The algorithm moves from one target cell (n), to the next (n + 1) using a rectangular search grid. The width and the length of the grid are defined as the proportion of a target cell's lumen diameter (where Ln = CAn1/2) multiplied by sle (sl = search length) and swe (sw = search width) for larger earlywood cells (e) and sll and swl for smaller latewood cells (l).
-If more than one tracheid falls within the rectangular search grid, the closest tracheid will be selected. Specified size ratio variables between consecutive tracheid (i.e., ec = earlywood cut off, and lc = latewood cut off) are used to stop the algorithm search when unrealistically small cells are detected. 
-Finally, the arguments prof.co (i.e., a threshold ratio of distance to the previous [between n and n-1] and the consecutive tracheid [n and n + 1]), and max.cell (expressed as a proportion of the annual maximum number of radial file cells) can be used to filter out incomplete radial files. 
+If more than one tracheid falls within the rectangular search grid, the closest tracheid will be selected. Specified size ratio variables between consecutive tracheid (i.e., ec = earlywood cut off, and lc = latewood cut off) are used to stop the algorithm search when unrealistically small cells are detected.
+Finally, the arguments prof.co (i.e., a threshold ratio of distance to the previous [between n and n-1] and the consecutive tracheid [n and n + 1]), and max.cell (expressed as a proportion of the annual maximum number of radial file cells) can be used to filter out incomplete radial files.
 
 
 ```r
@@ -356,7 +358,7 @@ det<-pos.det(first, swe = 0.7, sle = 3, ec = 1.75, swl = 0.5, sll = 5, lc = 10,
 <p class="caption">Figure 6: Standard output from the pos.det() function with a larger sll parameter. </p>
 </div>
 
-The radial file detection seems appropriate as all aligned cells appeared to be assigned to a specific row, where the number indicate the cell number relative to the first cell within the radial file. 
+The radial file detection seems appropriate as all aligned cells appeared to be assigned to a specific row, where the number indicate the cell number relative to the first cell within the radial file.
 When satisfied with the results, an ouput file can be generated.
 
 The function `write.output()` allows the user to export results in numerical (as \*.txt) and graphical (as \*.pdf) formats to a repository or folder selected by the user.
@@ -372,15 +374,15 @@ head(output)
 
 The output file contains the "ROW" and "POSITION" column, with NA's assigned to tracheids that do not belong to continuous radial files, and a column "MARKER" that tracks RAPTOR decisions in each radial file.
 Specifically, values are assigned to the last detected "earlywood" cell (value = 1), the last detected "latewood" cell (value = 2), the last detected cell (value = 3), and radial files removed due to gaps (value = 4) or too few cells (value = 5).
-The function write.output() allows the user to export results in numerical (as \*.txt) and graphical (as \*.pdf) formats to a repository or folder selected by the user. 
+The function write.output() allows the user to export results in numerical (as \*.txt) and graphical (as \*.pdf) formats to a repository or folder selected by the user.
 
 ## 6. Batch mode workflow for generating tracheidograms
 
 The `batch.mode()` function allows the user to automatically run the above functions from a target folder populated by previously prepared files with defined settings.
-With RAPTOR, we offer access to the characterisation of a significantly increased number of radial files, aiding in the development of more robust and versatile intra-annual anatomical parameters. 
+With RAPTOR, we offer access to the characterisation of a significantly increased number of radial files, aiding in the development of more robust and versatile intra-annual anatomical parameters.
 Also, these measurements provide a better appreciation of the large variability of anatomical parameters among radial files, annual rings, and species.
 
-Below we provide an example of running through all example data included within the RAPTOR package, to illustrate a robust workflow. 
+Below we provide an example of running through all example data included within the RAPTOR package, to illustrate a robust workflow.
 
 Here we run the script for three specific years (2007-2010) per species (including *Picea abies*, *Larix decidua*, *Pinus cembra* and *Pinus sylvestris*, with the latter being described in the previous example)
 
@@ -509,7 +511,7 @@ input<-is.raptor(example.data(species="LOT_PICEA") , str = FALSE)
 input<-input[which(input[,"YEAR"]>2006 &input[,"YEAR"]<2011),] #select years 2007-2010
 aligned<-align(input,list=c(0.04,0.04,0,0))
 first<-first.cell(aligned, frac.small = 0.5, yrs = FALSE, make.plot = FALSE)
-output<-pos.det(first, swe = 0.5, sle = 3, ec = 1.75, swl = 0.25, sll = 5, lc = 10,prof.co = 1.5, max.cells = 0.5, 
+output<-pos.det(first, swe = 0.5, sle = 3, ec = 1.75, swl = 0.25, sll = 5, lc = 10,prof.co = 1.5, max.cells = 0.5,
                 yrs = FALSE, aligning = FALSE, make.plot = FALSE)
 LOT_PICEA<-write.output(output)
 ```
@@ -541,25 +543,25 @@ for(i in c(1:length(sample))){
     years<-unique(as.numeric(input$YEAR))
     for(j in c(1:length(years))){
         select<-input[which(input["YEAR"]==years[j]),]
-        
+
         #- preparing data
         lumen<-na.omit(data.frame(gram=select[,"ROW"],lumen.wall="l",order=select[,"POSITION"], area=select[,"CA"]))
         wall<-na.omit(data.frame(gram=select[,"ROW"],lumen.wall="w",order=select[,"POSITION"], area=select[,"CWTALL"]))
         gram<-rbind(lumen,wall)
         gram<-gram[order(gram[,"gram"]),]
         gram[,"gram"]<-as.integer(gram[,"gram"])
-        
+
         #- determining mean maximum cells
         max.cells<-NA
         for(z in c(1:max(gram[,"gram"]))){gram[which(gram[,"gram"]==unique(gram[,"gram"])[z]),]
             max.cells[z]<-max(gram[which(gram[,"gram"]==unique(gram[,"gram"])[z]),"order"])}
         mean.cells<-round(mean(max.cells))
-        
+
         #- apply standardization
         output<-with(gram,standz.all(traq=area, series=gram,wl=lumen.wall, w.char="w", G=mean.cells))
         lumen.mean<-colMeans(output$data.stdz[output$which.l,])
         wall.mean<-colMeans(output$data.stdz[output$which.w,])
-        
+
         #- generate output and store data
         output<-data.frame(ID=sample[i],YEAR=years[j],POSITION=c(1:mean.cells) ,LUMEN= lumen.mean,
                            WALL= wall.mean)
@@ -577,7 +579,7 @@ colour<-c("darkgreen","darkorange","palegreen","greenyellow")
 thickness<-c(1,1,2,2)
 type<-c(2,1,2,1)
 for(i in c(1:length(sample))){
-    select<-final[which(final[,"ID"]==sample[i]),] 
+    select<-final[which(final[,"ID"]==sample[i]),]
     plot(1,1,type="l",ylab="",col="white",xlab="",yaxt="n",xaxt="n",ylim=c(0,lumen.lim),xlim=c(1,max(select[,
                                                                                                             "POSITION"])))
     axis(side=1,labels=FALSE)
