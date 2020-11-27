@@ -63,13 +63,14 @@ library(zoo)
 
 ## 3. Import data
 
-The data presented here originates from a well-monitored forests near Basel, Switzerland ($47^\circ 28\'7\'\'N$, `\(7^\circ 30\'8\'\'E\)`, `\(550~m\)` above sea level).
-The average annual air temperature is `\(10.5^\circ\)` C with an annual total precipitation of `\(990~mm\)`, where the growing season ranges from end of April to early October.
+The data presented here originates from a well-monitored forests near Basel, Switzerland ($ 47^\circ 28'7\'\'N$, $ 7^\circ 30'8\'\'E $,
+  $ 550~m $ above sea level).
+The average annual air temperature is $ 10.5^\circ C$ with an annual total precipitation of $ 990~mm $, where the growing season ranges from end of April to early October.
 The forest stand is dominated by Fagus sylvatica L. and Quercus petraea (Matuschka) Liebl., with an age range of 80-130 years. At the stand level,
-tree height ranges from 30-35 m, tree (diameter at breast height `\(> 10~cm\)`) density is 415 trees `\(ha^{-1}\)`, and the basal area approximates `\(46~m^2 ha^{-1}\)`.
+tree height ranges from $ 30-35~m $, tree (diameter at breast height $ > 10~cm $) density is 415 trees $ ha^{-1} $, and the basal area approximates $ 46~m^2 ha^{-1} $.
 Other species present within the stand include Abies alba Mill., Larix decidua Mill., Picea abies (L.) Karst, Pinus sylvestris L., and Carpinus betulus L.
-On January 2019, wood cores of ca. `\(12~cm\)` length were taken from a Fagus sylvatica tree (using a increment borer; Haglöf, Sweden).
-For the wood core, `\(10-12~micron\)` thick micro-sections were cut using a rotatory microtome (Leica RM2245, Leica Biosystems, Nussloch, Germany).
+On January 2019, wood cores of ca. $ 12~cm $ length were taken from a Fagus sylvatica tree (using a increment borer; Haglöf, Sweden).
+For the wood core, $ 10-12~micron $ thick micro-sections were cut using a rotatory microtome (Leica RM2245, Leica Biosystems, Nussloch, Germany).
 The thin sections was stained with safranin and astrablue, and fixed on glass slides using Canada balsam
 Digital images of radial anatomical properties (fibres and vessels) were taken from the thin sections for each sapwood ring using a slide-scanner (Axio Scan Z1, Zeiss, Germany).
 ROXAS combined with Image-Pro Plus (Media Cybernetics, Rockville, MD, USA), allowed us to detect fibres and vessels.
@@ -865,10 +866,10 @@ next to the height of each bin in micron (`height_bin`) and the center of the bi
 All used parameters are stored in the columns, `cwt_param`, `wood_type`, `bin_min`, `vessel_size`, `cell_min`, `cell_max`, `ray_min`, `ray_max` and rotate.
 The following relevant wood anatomical outputs are provided per bin (or sector):
 
-- `Kh_sum`: Theoretical hydraulic conductivity ($m^4 s^{-1} MPa^{-1}$) as approximated by Poiseuille's law and adjusted to elliptical tubes. The calculation for Kh comes from Nonweiler TRF. 1975. Flow of biological fluids through non-ideal capillaries. In: Zimmermann MH, Milburn JA (eds) Encyclopaedia  of  plant  physiology,  new  series,  vol  1.  Transport  in plants.  I.  Phloem  transport,  Appendix  I.  Springer,  Berlin Heidelberg New York, pp 474-477.
-- `Ks`: Theoretical xylem-specific hydraulic conductivity for a bin ($m^2 s^{-1} MPa^{-1}$) assuming a tube length of `\(1~m\)`: Kh/(bin area-area of exclusion; in `\(m^2\)`).
+- `Kh_sum`: Theoretical hydraulic conductivity ($ m^4 s^{-1} MPa^{-1} $) as approximated by Poiseuille's law and adjusted to elliptical tubes. The calculation for Kh comes from Nonweiler TRF. 1975. Flow of biological fluids through non-ideal capillaries. In: Zimmermann MH, Milburn JA (eds) Encyclopaedia  of  plant  physiology,  new  series,  vol  1.  Transport  in plants.  I.  Phloem  transport,  Appendix  I.  Springer,  Berlin Heidelberg New York, pp 474-477.
+- `Ks`: Theoretical xylem-specific hydraulic conductivity for a bin ($ m^2 s^{-1} MPa^{-1} $) assuming a tube length of $ 1 m $: Kh/(bin area-area of exclusion; in $ m^2 $).
 - `DH`: Hydraulic diameter of cell (i.e. correcting for effect of elliptical shape on flow; in microns); see Lewis AM, Boose ER. 1995. Estimating Volume Flow Rates Through Xylem Conduits. American Journal of Botany 82: 1112-1116.
-- `rho`: Overall mean relative anatomical cell density (in `\(g~cm^{-3}\)`). Assuming a fixed density of wall material of `\(1.504~g~cm^{-3}\)` as found by Kellogg RM, Wangaard FF (1969) Variation in the cell-wall density of wood. Wood and Fiber Science 1:180-204. ATTENTION: may include artefacts from pit-pore associated widening.
+- `rho`: Overall mean relative anatomical cell density (in $ g~cm^{-3}$ ). Assuming a fixed density of wall material of $ 1.504~g~cm^{-3} $ as found by Kellogg RM, Wangaard FF (1969) Variation in the cell-wall density of wood. Wood and Fiber Science 1:180-204. ATTENTION: may include artefacts from pit-pore associated widening.
 - `LA_median`: Median lumen area of all detected cell within a bin.
 - `add_cells`: Added cells within the bin due to the presence of empty space not assigned to rays or detected as an area of exclusion.
 - `present_cells`: Detected cells within the bin area.
