@@ -3,7 +3,7 @@ authors:
 - admin
 categories:
 - News
-date: "2020-11-30T00:00:00Z"
+date: "2020-11-27T00:00:00Z"
 draft: false
 featured: false
 image:
@@ -11,7 +11,7 @@ image:
   focal_point: ""
   placement: 1
   preview_only: false
-lastmod: "2020-11-30T00:00:00Z"
+lastmod: "2020-11-27T00:00:00Z"
 slug: deep-at-qnet
 projects: []
 subtitle: 'DEEP is contributing to Q-NET'
