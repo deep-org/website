@@ -22,7 +22,7 @@ projects: []
 ---
 
 ```{r, setup, include=FALSE}
-knitr::opts_chunk$set(fig.width = 10, collapse = TRUE, echo = TRUE, eval = FALSE)
+knitr::opts_chunk$set(fig.width = 10, collapse = TRUE, echo = TRUE, eval = TRUE)
 
 
 # save the built-in output hook

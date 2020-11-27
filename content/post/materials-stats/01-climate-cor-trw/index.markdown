@@ -57,6 +57,42 @@ Below one will load an example tree-ring series and climate data.
 ```r
 #load tree-ring data
 TRW<-read.rwl("https://raw.githubusercontent.com/deep-org/materials/main/data/general_statistics/01_climate_cor_trw/saviese.txt")
+## Attempting to automatically detect format.
+## Assuming a Tucson format file.
+## There does not appear to be a header in the rwl file
+## There are 32 series
+## 1    	10S01A  	 1921	 2005	0.01
+## 2    	10S01B  	 1926	 2005	0.01
+## 3    	10S03A  	 1928	 2005	0.01
+## 4    	10S03B  	 1920	 2005	0.01
+## 5    	10S04A  	 1924	 2005	0.01
+## 6    	10S04B  	 1924	 2005	0.01
+## 7    	10S05A  	 1931	 2005	0.01
+## 8    	10S05B  	 1928	 2005	0.01
+## 9    	10S08A  	 1923	 2005	0.01
+## 10   	10S08B  	 1924	 2001	0.01
+## 11   	10S20A  	 1924	 2005	0.01
+## 12   	10S20B  	 1926	 2005	0.01
+## 13   	10S21A  	 1926	 2005	0.01
+## 14   	10S21B  	 1926	 2005	0.01
+## 15   	10S22A  	 1926	 2005	0.01
+## 16   	10S22B  	 1926	 2005	0.01
+## 17   	10S23A  	 1926	 2005	0.01
+## 18   	10S23B  	 1926	 2005	0.01
+## 19   	10S24A  	 1925	 2005	0.01
+## 20   	10S24B  	 1924	 2005	0.01
+## 21   	10S25A  	 1893	 2005	0.01
+## 22   	10S25B  	 1887	 2005	0.01
+## 23   	10S26B  	 1943	 2005	0.01
+## 24   	10S28A  	 1820	 2005	0.01
+## 25   	10S28B  	 1819	 2005	0.01
+## 26   	10S29A  	 1902	 2005	0.01
+## 27   	10S50A  	 1872	 2005	0.01
+## 28   	10S50B  	 1894	 2005	0.01
+## 29   	10S51A  	 1887	 2005	0.01
+## 30   	10S51B  	 1898	 2005	0.01
+## 31   	10S57A  	 1841	 2005	0.01
+## 32   	10S58A  	 1872	 2005	0.01
 
 #apply detrending
 TRW<-detrend(TRW,method="Spline",nyrs=50)
@@ -228,6 +264,11 @@ PP<-P1+P2
 print(PP)
 ```
 
+<div class="figure">
+<img src="/post/materials-stats/01-climate-cor-trw/index_files/figure-html/unnamed-chunk-6-1.png" alt="This graph shows climate-growth correlations for different end months (along the x-axis) and different season lengths (y-axis). Positive correlations are shown in green and blue, and negative correlations in yellow to redish colors." width="960" />
+<p class="caption">Figure 1: This graph shows climate-growth correlations for different end months (along the x-axis) and different season lengths (y-axis). Positive correlations are shown in green and blue, and negative correlations in yellow to redish colors.</p>
+</div>
+
 Combining P1 and P2 allows for more flexibility for the plotting. One could add a third layer, specifying a certain threshold value, i.e. where p<0.01 via specifying that threshold (e.g., `at=0.3`) and increasing line width (e.g., `lwd=1`).
 
 Correlation is the standardized regression coefficient, where both standard deviations of the tree-ring data and the climate data are set to 1. The correct interpretation is thus primarily noise-related. A high (absolute) correlation coefficient means there is little noise in a relationship. But it doesn't allow users to draw conclusions on the actual magnitude of impact on radial tree growth. This is especially true, when one wants to compare climate impacts at two different sites, or for two species growing at the same site. Correlation is not directly related to climate sensitivity, at least not on its own. It's only the fraction of signal explained.
@@ -300,18 +341,23 @@ PP<-P1+P2
 print(PP)
 ```
 
+<img src="/post/materials-stats/01-climate-cor-trw/index_files/figure-html/unnamed-chunk-8-1.png" width="960" />
+
 Because we sum up individual months, the comparison is actually a bit unfair and biased towards yielding strongest impacts on short season lengths. The standard deviation of the annual time series (aggregated over 12 months) is ~6 times higher than at monthly periods, so 100 mm change at annual scale is not really a lot, while it is more than a standard deviation on the monthly scale.
 
 
 ```r
 #standard deviation of May precipitation
 sd(Climatesite[[1]][,17],na.rm=T)
+## [1] 44.72265
 
 #standard deviation of Mar-Jun precipitation
 sd(Climatesite[[4]][,18],na.rm=T)
+## [1] 121.7759
 
 #standard deviation of pSep-Aug precipation
 sd(Climatesite[[12]][,20],na.rm=T)
+## [1] 275.4319
 ```
 
 
@@ -322,6 +368,8 @@ P2<-contourplot(t(silly_slope*c(1:12)*100),labels=T,col.regions=F,region=F,lwd=0
 PP<-P1+P2
 print(PP)
 ```
+
+<img src="/post/materials-stats/01-climate-cor-trw/index_files/figure-html/unnamed-chunk-10-1.png" width="960" />
 
 This yields very similar results compared to the aggregation via `stat="mean"` instead of `stat="sum"` and shows the results if every month in that season had 100 mm more precipitation. This nicely shows the effect of using sum or mean for precipitation aggregation and the derivation of regression coefficients.
 
@@ -336,6 +384,8 @@ P2<-contourplot(t(silly_slope*t(climate_sd)[,1:22]),labels=T,col.regions=F,regio
 PP<-P1+P2
 print(PP)
 ```
+
+<img src="/post/materials-stats/01-climate-cor-trw/index_files/figure-html/unnamed-chunk-11-1.png" width="960" />
 
 The graph looks pretty similar in its pattern to the correlation graph from above. But now we know how much relative growth change a standard deviation change in the respective climate time series invokes.
 
@@ -354,6 +404,11 @@ P1<-contourplot(t(silly_cor),region=T,contour=F,lwd=0.4,col.regions=colorRampPal
 P2<-contourplot(t(silly_cor),labels=T,col.regions=F,region=F,lwd=0.4,at=c(seq(-0.80,0.80,0.05)))
 PP<-P1+P2
 print(PP)
+```
+
+<img src="/post/materials-stats/01-climate-cor-trw/index_files/figure-html/unnamed-chunk-12-1.png" width="960" />
+
+```r
 
 silly_slope<-Climateslopeplot_new(TRW,Climatesite,1950,2005,"Yes",50,weighted=F)
 P1<-contourplot(t(silly_slope),region=T,contour=F,lwd=0.4,col.regions=colorRampPalette(c("red","yellow","white","green3","blue")),at=c(seq(-0.105,0.105,0.01)),xlab="Months",ylab="Window length",main=title)
@@ -361,6 +416,8 @@ P2<-contourplot(t(silly_slope),labels=T,col.regions=F,region=F,lwd=0.4,at=c(seq(
 PP<-P1+P2
 print(PP)
 ```
+
+<img src="/post/materials-stats/01-climate-cor-trw/index_files/figure-html/unnamed-chunk-12-2.png" width="960" />
 
 This graph shows how much the relative tree growth changes for a 1°C increase in mean temperature (0.07=7%).
 
@@ -373,6 +430,8 @@ P2<-contourplot(t(silly_slope*t(climate_sd)[,1:22]),labels=T,col.regions=F,regio
 PP<-P1+P2
 print(PP)
 ```
+
+<img src="/post/materials-stats/01-climate-cor-trw/index_files/figure-html/unnamed-chunk-13-1.png" width="960" />
 
 Again, this graph shows the same pattern as in the correlation plot, but for normalized climate data and the un-normalized ring-width index, a percentage tree growth change per standard deviation change in temperature.
 
