@@ -12,7 +12,7 @@ tags:
   - interactivity
   - wood anatomy
   - environmental data
-subtitle: 'Interactive, efficient and reproduicble data processing'
+subtitle: 'Interactive, efficient and reproducible data processing'
 summary: 'Ever more data is available to Earth System scientists - exploring, cleaning and curating it in a reproducible manner can be done efficiently and conveniently with interactive tools such as datacleanr. Learn how to use it for quantitative wood anatomy, as well as for environmental data in a guided tutorial.'
 lastmod: '2020-11-25T15:04:33+01:00'
 featured: no
