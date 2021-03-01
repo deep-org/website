@@ -1,0 +1,503 @@
+---
+author: [rpeters, ahurley]
+draft: false
+date: 2021-02-09T20:00:00
+categories: ["R", "workshop"]
+tags: ["reproducibility", "outliers", "data processing"]
+linktitle: datacleanr Workflow
+menu:
+    uhelsinki-workshop:
+      weight: 10
+title: Reproducible and interactive processing of Hyytiälä data with datacleanr
+type: docs
+toc: true
+---
+
+
+
+
+# datacleanr Workflow
+
+# 1. Background
+
+<!-- [![](https://cranlogs.r-pkg.org/badges/datacleanr)](https://cran.r-project.org/package=datacleanr) -->
+
+
+Here we introduce `datacleanr`, a recently developed app.
+It is a flexible and efficient tool for interactive data cleaning, and is inherently interoperable, as it seamlessly integrates into reproducible data analyses pipelines in `R`.
+It can deal with nested tabular, as well as spatial and time series data.
+We present how to use the app and show two use-cases - one for processing dendrometer data and one for sap flow measurements.
+Detailed documentation and animated examples for all features of this tool can be found at [the-hull.github.io/datacleanr](https://the-hull.github.io/datacleanr).
+
+# 2. Installation
+
+The latest release from GitHub can be installed using:
+
+
+```r
+# additional installs for later use
+packages <- (c("remotes", "dplyr", "forcats","readxl", "lubridate"))
+install.packages(setdiff(packages,
+                         rownames(installed.packages())))
+remotes::install_github("the-hull/datacleanr")
+
+library(datacleanr)
+library(dplyr)
+
+```
+
+
+# 3. Design and features
+
+`datacleanr` is developed using the [shiny](https://shiny.rstudio.com/) package, and relies on informative summaries, visual cues and interactive data selection and annotation.
+All data-altering operations are documented, and converted to valid `R` code (**reproducible recipe**), that can be copied, sent to an active `RStudio` script, or saved to disk.
+
+The documentation for the app (`?dcr_app()`) explains the basic use and all features.
+Throughout the app, there are conveniently-placed help links that provide details on features.
+
+
+There are **four tabs** in the app for these tasks:
+
+- **Set-up & Overview**: define nesting structure based on (multiple) groups.
+- **Filtering**: use `R` expression to filter/subset data.
+- **Visual Cleaning and Annotating**: generate bivarirate (time series) plots and maps, as well as highlight and annotate individual observations. Cycle through nested groups to expedite exploration and cleaning. Histograms of original vs. 'cleaned' data can be generated.
+- **Extract**: generate reproducible recipe and define outputs. **`dcr_app` also returns all intermediate and final outputs invisibly to the active `R` session for later use (e.g. when batch processing)**
+
+Note, maps require columns `lon` and `lat` (X and Y) in decimal degrees in the data set to render, as well as a `Mapbox` Key (see [here](https://github.com/the-Hull/datacleanr#34-spatial) for details).
+
+# 4. Additional features
+
+- **Grouping**: the grouping defined in the "Set-up and Overview" tab is carried forward through the app. These groups can be used to cycle through nested/granular data, and considerably speed up exploration and cleaning. These groups are also available for filtering (Filtering tab), where filter expressions can be scoped to group level (i.e. no groups, individual, all groups).
+- **Interoperability**:
+  when a logical (`TRUE`\\`FALSE`) column named `.dcrflag` is present, corresponding observations are rendered with different symbols in plots and maps. Use this feature to validate or cross-check external quality control or outlier flagging methods.
+- **Batching**:
+  If data sets are too large, or too deeply nested (e.g. individual, plot, site, region, etc.), we recommend a split-combine approach to expedite the processing.
+
+
+```r
+iris_split <- split(iris, iris$Species)
+
+output <- lapply(iris_split,
+       dcr_app)
+
+```
+
+
+
+# 5. `datacleanr` with Dendrometer Measurements
+
+Radial stem size changes – measured with automated dendrometers in micrometer at intra-daily resolution – offer one of the most promising field datasets to link environmental conditions with both tree water relations and growth dynamics. However, the analysis of dendrometer measurements can be challenging, for multiple reasons: raw measurements often contain outliers, errors, shifts or jumps in the data due to adjustments of the device in the field, electronic failures or due to external mechanical disturbances. 
+
+In the following, we generate a temporally explicit representation of dendrometer measurements and offer ways of removing outliers and errors interactively. Data used within this example originates from the Hyytiälä SMEAR II LTER flux tower site (Longitude: 24.29556;
+Latitude: 61.84792; https://deims.org/663dac80-211d-4c19-a356-04ee0da0f0eb). The mean annual temperature at this site is 2.9 degrees C with a mean annual precipitation of 709 mm. The SMEAR site (Station for Measuring Ecosystem-Atmosphere Relations) is situated in the Hyytiälä Forestry Field Station of the University of Helsinki. The site consists of a managed, 60-yr old Scots pine forest stand, where two Scots pine and one birch were continuously monitored from 2015 until 2018. 
+
+Linear variable differential transformers (LVDT) were used to monitor high-resolution radius variations every 10 minutes at the base of the tree (1.3 m above the ground). These measurement provide information on both the daily and seasonal shrinkage of the stem, as information on high-resolution radial growth dynamics. However, extracting such information requires careful assessment of the data and cleaning of potential outliers, which will be performed below. You can store the data in your working directory via this link: https:/github.com/deep-org/workshop_data/raw/master/UH/HYY-dendro.xlsx 
+
+Details on the specific trees are provided here:  
+
+
+**Tree 1**:
+
+| variable    	| dendro_stem_pine_Penttib_LVDT                                                                                                                                                     	|
+|-------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| title       	| Stem dendrometer, pine Pentti bottom (LVDT)                                                                                                                                       	|
+| description 	| Stem dendrometer, Scots pine (*Pinus sylvestris*) Pentti bottom, northwest from tower, north-facing side of the tree, dominant tree, linear displacement transducer method (LVDT) 	|
+| type        	| radius                                                                                                                                                                            	|
+| unit        	| micrometers                                                                                                                                                                       	|
+| timezone    	| UTC+2                                                                                                                                                                             	|
+
+**Tree 2**:
+
+| variable    	| dendro_stem_birch_Jennib_LVDT                                                                                                                                                     	|
+|-------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| title       	| Stem dendrometer, birch Jenni bottom (LVDT)                                                                                                                                       	|
+| description 	| Stem dendrometer, silver birch (*Betula pendula*) Jenni bottom, northeast from new tower, north-facing side of the tree, dominant tree, linear displacement transducer method (LVDT) 	|
+| type        	| radius                                                                                                                                                                            	|
+| unit        	| micrometers                                                                                                                                                                       	|
+| timezone    	| UTC+2                                                                                                                                                                             	|
+
+**Tree 3**:
+
+
+| variable    	| dendro_stem_pine_Sylvib_LVDT                                                                                                                                                     	|
+|-------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| title       	| Stem dendrometer, pine Sylvi bottom (LVDT)                                                                                                                                       	|
+| description 	| Stem dendrometer, Scots pine (*Pinus sylvestris*) Sylvi bottom, eastside next to new, north-facing side of the tree, dominant tree, linear displacement transducer method (LVDT) 	|
+| type        	| radius                                                                                                                                                                            	|
+| unit        	| micrometers                                                                                                                                                                       	|
+| timezone    	| UTC+2                                                                                                                                                                             	|
+
+Find an example data set to download and place in your current working directory [here](https://raw.githubusercontent.com/deep-org/workshop_data/master/UH/HYY-dendro.xlsx).
+
+
+```r
+
+require(readxl)
+
+# set you working directory on the correct path! 
+#[click: Session -> Select Working Directory -> Choose Directory; or CHANGE to below provided code]
+# setwd("D:/Documents/UL - POSTDOC/02_communication/Education - Finland") #alter this code
+
+# grab example data
+input <- read_xlsx("HYY-dendro.xlsx")
+
+# inspect the structure of the data
+str(input)
+
+# the classes appear to be wrong, as the measurements are numeric
+sapply(input, class)
+
+# this can be changed by using sapply
+cols.num <- c("dendro_stem_pine_Penttib_LVDT","dendro_stem_pine_Jennib_LVDT","dendro_stem_pine_Sylvib_LVDT")
+input[cols.num] <- sapply(input[cols.num],as.numeric)
+sapply(input, class)
+
+# one can now do a simple plot one of the pine trees
+plot(input$timestamp,input$dendro_stem_pine_Penttib_LVDT)
+output<-input
+
+```
+
+The `output` clearly shows that we have some strange outlier points in 2015 and a shift of the sensor in 2016. The shift can be addressed by using `treenetproc`, after all outlier points have been removed. Moreover, as we are interested in what happens to the tree during the growing season, we might have to remove winter shrinkage patterns, clearly present at the beginning of 2017. We can use `datacleanr` to inspect and clean the data, but a few additional steps make the subsequent processing considerably more efficient.
+
+The data has to be transformed to a long format, as currently each sensor is provided in a separate column. Long-format data is in general easier to process and store. To do so, we first have to identity the timestamp column and check whether there is no issues with the format of time (i.e., day-light saving present). 
+
+
+```r
+
+# choose or test options for reading in time stamp
+# by commenting-out undesired options
+formats <- c(
+        "dmy HM"
+        ,"dmy HMS"
+        ,"mdy HM"
+        ,"mdy HMS"
+        ,"ymd HM"
+        ,"ymd HMS"
+        ,"ymd HM"
+        ,"ymd HMS"
+        ,"jy HM"
+        ,"jy HMS"
+        ,"yj HM"
+        ,"yj HMS"
+    )
+
+timestamp <- lubridate::parse_date_time(
+        output$timestamp,
+        order = formats)
+
+# test if the timestamp is correct so that R can recognize the date and time
+print(timestamp[1:3])
+head(output[1:3,])
+
+# Check if any daylight savings issues were introduced:
+
+# should be 0 / zero
+timestamp %>% lubridate::dst() %>% sum()
+
+# check if any diffs are 0 / zero
+# this is only helpful if data set is in WIDE format
+interval_diffs <- difftime(timestamp,
+                           dplyr::lag(timestamp))[-1]
+any(interval_diffs == 0)
+
+# check if timestamps have constant interval
+# if not, could indicate wrong timestamp format
+# or missing data
+interval_diffs %>% unique()
+
+# no differences are observed and no daylight saving present so we can add the timestamp to the data
+output$timestamp<-timestamp
+str(output)
+
+```
+
+Now that the timestamp has been tested, we can start transforming the data into long format. This data will then serve as the input for the data cleaning procedure. Below we will show you how to prepare the data and launch the shiny app. Within the app one needs to make the following steps:  
+
+1. Set `sensor` as the grouping variables on the app's first tab (`Set-up & Overview`) and press start.
+2. On the `Visual Cleaning & Annotating` tab, set `timestamp` and `value` for the `X` and `Y` (not `Z`) var, respectively, and click `Plot`.
+3. Some values are conspicuous, and should/could be deleted. When hovering on the top right side of the plot one can zoom in to specific problem area and click (or box select) outliers or erroneous data. One can isolate a specific tree by double clicking on the specific circle of the sensor in the figure legend.
+4. On the lower left side of the tab, give an appropriate label for an annotation, click `Auto-annotate` and use the lasso tool to highlight the conspicuous ROW.
+5. Navigate to the `Extract` tab, and save your recipe by pressing `Save Recipe & Data`.
+6. Close the app.
+
+
+
+
+```r
+# generate a long format for the output file
+output_long <- tidyr::pivot_longer(data = output,
+                                          cols = !tidyselect::all_of(c("timestamp")),
+                                          names_to = "sensor",
+                                          values_to = "value") %>%
+    dplyr::arrange(sensor)
+
+# check all columns have appropriate values
+str(output_long)
+
+# clean column names
+output_long <- janitor::clean_names(output_long)
+
+# set the working directory on which the cleaned files will be saved
+setwd("D:/Documents/UL - POSTDOC/02_communication/Education - Finland")
+saveRDS(object = output_long,file="output_long.Rds")
+
+
+# launch datacleaner
+dcr_path <- paste0(getwd(),"/output_long.Rds")
+dcr_out <-datacleanr::dcr_app(dcr_path)
+
+```
+
+
+The workflow (above steps 1-6) allows rapidly checking and quality-controlling dendrometer results, which can  be the basis for additional cleaning (i.e., removing observations). `datacleanr` is hence a powerful tool to facilitate the generation of high-quality dendrometer datasets, which can subsequently be used in other R packages.
+
+
+```r
+# to obtain the cleaned data one can run the following code
+print(getwd())
+dcr_clean_suffix <- "output_long_cleaned.Rds$"
+path_cleaned_dcr <- list.files(path = getwd(),
+           pattern = dcr_clean_suffix,
+           full.names = TRUE)
+
+final<-readRDS(path_cleaned_dcr)
+
+if(".annotation" %in% colnames(final)){
+
+        # filter NA
+        final <- final[is.na(final$.annotation), ]
+        # drop dcr columns
+        final <- final[, -which(names(final) %in% c(".annotation", ".dcrflag",".dcrkey","selection_count"))]
+    }
+
+# final output which can be stored on your directory for the next steps
+head(final)
+saveRDS(final,"dendrometer_cleaned.Rds")
+
+```
+
+**OPTIONAL:** 
+In specific cases the size of the dataset could prevent proper analyses. As such `datacleanr` has the option to split up the dataset per sensor. To do so one can utilize the below provided code and do sensor specific cleaning. 
+
+
+```r
+# Split and save ----------------------------------------------------------
+
+split_output <- base::split(output_long,
+                                        f = output_long[ , "sensor"])
+
+path_save_prep <- paste0(getwd(),"/output_long.Rds")
+    
+# used for saving splits
+base_split_file_path <-  paste0(fs::path_ext_remove(path_save_prep),
+                           "_split_")
+
+lapply(seq_along(split_output),
+       function(x){
+
+           # get cleaner names
+           tmp_names <- names(split_output[x])
+           tmp_names <- gsub("[ ]", "_", tmp_names, perl = TRUE)
+
+           # make adjusted path
+           tmp_path <- paste0(base_split_file_path,
+                              tmp_names, ".RDS")
+           # replace any spaces with underscores
+
+           saveRDS(split_output[[x]],
+                   file = tmp_path)
+       })
+
+# launch datacleaner (when closing datacleaner the next sensor will be launched)
+paths <- list.files(path = getwd(),
+                    pattern = "output_long_split_",
+                    full.names = TRUE)
+print(paths)
+
+# before closing one has to press the `Save Recipe & Data` 
+dcr_out<-lapply(paths,
+       datacleanr::dcr_app)
+
+# when you have closed the app run the script below
+
+#merging data
+dcr_clean_suffix <- "output_long.*LVDT_cleaned.Rds$"
+
+path_cleaned_dcr <- list.files(path = fs::path_dir(path_save_prep),
+           pattern = dcr_clean_suffix,
+           full.names = TRUE)
+
+# read and combine (single / split) data sets after cleaning
+    final <- lapply(path_cleaned_dcr,
+                                 readRDS) %>%
+                        dplyr::bind_rows()
+
+    if(".annotation" %in% colnames(final)){
+
+        # filter NA
+        final <- final[is.na(final$.annotation), ]
+        # drop dcr columns
+        final <- final[, -which(names(final) %in% c(".annotation", ".dcrflag",".dcrkey","selection_count"))]
+    }
+
+# final output which can be stored on your directory for the next steps
+head(final)
+saveRDS(final,"dendrometer_cleaned.Rds")
+    
+```
+
+# 6. `datacleanr` assignement for sap flow data collected with thermal dissipation probes
+
+**Assignment** On the same trees thermal dissipation probe have been installed. These probes provide information on the voltage difference between a heated and unheated probes which can give information on the amount of sap flux density (amount of water flow per sapwood area per hour). One needs to clean this data, as erroneous signal are present due to thermal drifts and sensor failure. With the example presented above your assignement is to clean this data and stored the cleaned dataset. You can store the data in your working directory via this link: https:/github.com/deep-org/workshop_data/raw/master/UH/HYY-sf.xlsx  
+
+The data can be obtained by using the following code: 
+
+
+```r
+
+require(readxl)
+
+# set you working directory on the correct path! 
+#[click: Session -> Select Working Directory -> Choose Directory; or change to below provided code]
+setwd("D:/Documents/UL - POSTDOC/02_communication/Education - Finland")
+
+# grab example data
+input <- read_xlsx("HYY-sf.xlsx")
+
+```
+
+First we have to put the data into the right format.
+
+
+```r
+
+#AWNSERS FOR PARTICIPANTS [hidden in provided version]
+
+# the classes appear to be wrong, as the measurements are numeric
+sapply(input, class)
+
+# this can be changed by using sapply
+cols.num <- c("sapflux_density_pine_Penttib_HD","sapflux_density_birch_Jennib_HD","sapflux_density_pine_Sylvib_HD")
+input[cols.num] <- sapply(input[cols.num],as.numeric)
+sapply(input, class)
+output<-input
+
+# choose or test options for reading in time stamp
+# by commenting-out undesired options
+formats <- c(
+        "dmy HM"
+        ,"dmy HMS"
+        ,"mdy HM"
+        ,"mdy HMS"
+        ,"ymd HM"
+        ,"ymd HMS"
+        ,"ymd HM"
+        ,"ymd HMS"
+        ,"jy HM"
+        ,"jy HMS"
+        ,"yj HM"
+        ,"yj HMS"
+    )
+
+timestamp <- lubridate::parse_date_time(
+        output$timestamp,
+        order = formats)
+
+# generate a long format for the output file
+output_long <- tidyr::pivot_longer(data = output,
+                                          cols = !tidyselect::all_of(c("timestamp")),
+                                          names_to = "sensor",
+                                          values_to = "value") %>%
+    dplyr::arrange(sensor)
+
+# check all columns have appropriate values
+str(output_long)
+
+# clean column names
+output_long <- janitor::clean_names(output_long)
+sf_long<-output_long
+
+```
+
+Ones the long format data is stored under the name sf_long, we can start launching `datacleanr`. However, as there are many data points there might be a need to split up the sensors before and then run the app. Please split up by sensor and perform the cleaning. Make sure you use sf_long as the file name and not output_long. 
+
+
+```r
+
+#ANSWERS FOR PARTICIPANTS [hidden in provided version]
+split_output <- base::split(sf_long,
+                                        f = sf_long[ , "sensor"])
+
+path_save_prep <- paste0(getwd(),"/sf_long.Rds")
+    
+# used for saving splits
+base_split_file_path <-  paste0(fs::path_ext_remove(path_save_prep),
+                           "_split_")
+
+lapply(seq_along(split_output),
+       function(x){
+
+           # get cleaner names
+           tmp_names <- names(split_output[x])
+           tmp_names <- gsub("[ ]", "_", tmp_names, perl = TRUE)
+
+           # make adjusted path
+           tmp_path <- paste0(base_split_file_path,
+                              tmp_names, ".RDS")
+           # replace any spaces with underscores
+
+           saveRDS(split_output[[x]],
+                   file = tmp_path)
+       })
+
+# launch datacleaner (when closing datacleaner the next sensor will be launched)
+paths <- list.files(path = getwd(),
+                    pattern = "sf_long_split_",
+                    full.names = TRUE)
+print(paths)
+
+# before closing one has to press the `Save Recipe & Data` 
+dcr_out<-lapply(paths,
+       datacleanr::dcr_app)
+
+```
+
+Now that each sensor is cleaned, one has to compile the data and store it on your working directory as an Rds file (named: sapflow_cleaned.Rds). 
+
+
+```r
+
+#ANSWERS FOR PARTICIPANTS [hidden in provided version]
+# when you have closed the app run the script below
+
+#merging data
+dcr_clean_suffix <- "sf_long.*HD_cleaned.Rds$"
+
+path_cleaned_dcr <- list.files(path = fs::path_dir(path_save_prep),
+           pattern = dcr_clean_suffix,
+           full.names = TRUE)
+
+# read and combine (single / split) data sets after cleaning
+    final <- lapply(path_cleaned_dcr,
+                                 readRDS) %>%
+                        dplyr::bind_rows()
+
+    if(".annotation" %in% colnames(final)){
+
+        # filter NA
+        final <- final[is.na(final$.annotation), ]
+        # drop dcr columns
+        final <- final[, -which(names(final) %in% c(".annotation", ".dcrflag",".dcrkey","selection_count"))]
+    }
+
+# final output which can be stored on your directory for the next steps
+head(final)
+saveRDS(final,"sapflow_cleaned.Rds")
+
+```
+
+# 7. Outlook
+
+`datacleanr` is a straight-forward and powerful tool for exploring, annotating and cleaning data - this is achieved through it's interactivity and ability to quickly cycle through (nested) groups in datasets, as well as multiple visualizations (dataset dimensions).
+A key component is the reproducible code that is generated to repeat any interactive steps, and hence, `datacleanr` can be included into any academic workflow aiming to maintain best practices in analyses. The next step will be to use this cleaned data in other R packages to obtain relevant data outputs. Use the following link to find more information: https://deep-tools.netlify.app/materials-dataio/
