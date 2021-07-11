@@ -27,8 +27,6 @@ links:
   icon_pack: fas
   name: View Files
   url: https://github.com/deep-org/workshop_data/tree/master/esa-workshop2021
-
-# ----------- update! 
 # - icon: external-link-alt
 #   icon_pack: fas
 #   name: View Session
@@ -40,7 +38,7 @@ tags:
 - R
 - DEEP
 url_code: ""
-url_pdf: ""
+url_pdf: "https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2021/ESA2021.pdf"
 url_video: ""
 
 
