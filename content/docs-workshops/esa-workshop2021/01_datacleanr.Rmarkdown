@@ -1,12 +1,12 @@
 ---
-author: [rpeters, ahurley]
+author: [rpeters, ahurley, cpappas]
 draft: false
 date: 2021-07-15T20:00:00
 categories: ["R", "workshop"]
 tags: ["reproducibility", "outliers", "data processing"]
 linktitle: datacleanr Workflow
 menu:
-    uhelsinki-workshop:
+    esa2021-workshop:
       weight: 10
 title: Reproducible and interactive processing of Hyytiälä data with datacleanr
 type: docs

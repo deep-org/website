@@ -1,10 +1,10 @@
 ---
-title: Time series data processing course
+title: A Comprehensive Toolbox for Tree Physiological Data Processing in R
 date: "2021-02-09T00:00:00Z"
 draft: false
-linktitle: Time series data processing
+linktitle: Tree Physiological Toolbox
 menu:
-    uhelsinki-workshop:
+    esa2021-workshop:
       name: Introduction
       weight: 1
 summary: Introduction to methods for processing time series in ecological research.

@@ -1,12 +1,12 @@
 ---
-author: [rpeters, ahurley]
+author: [rpeters, ahurley, cpappas]
 draft: false
 date: 2021-02-09T20:00:00
 categories: ["R", "workshop"]
 tags: ["sap flow", "crown conductance", "uncertainty"]
 linktitle: TREX Workflow
 menu:
-    uhelsinki-workshop:
+    esa2021-workshop:
       weight: 30
 title: Using TREX to process Hyytiälä sap flow data
 type: docs

@@ -1,12 +1,12 @@
 ---
-author: [rpeters]
+author: [rpeters, "Roman Zweifel"]
 draft: false
 date: 2021-07-15T20:00:00
 categories: ["R", "workshop"]
 tags: ["dendrometer", "tree water deficit", "treenetproc"]
 linktitle: treenetproc Workflow
 menu:
-    uhelsinki-workshop:
+    esa2021-workshop:
       weight: 20
 title: Using treenetproc to process Hyytiälä dendrometer data
 type: docs
