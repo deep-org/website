@@ -32,7 +32,7 @@ knitr::opts_chunk$set(eval = TRUE)
 The dendrometer data cleaned with `datacleanr` can be used to assess both drought stress and growth patterns. 
 Within the example we will process the dendrometer data using the `treenetproc` R package.
 We will use the package on a Scots pine and birch tree to analyze the differences in growth patterns and water stress levels.
-A step by step example is provided on how to process the dendrometer data.
+A step by step tutorial is provided on how to process the dendrometer data.
 Then concrete questions will be asked in relation to the species.  
 
 The package `treenetproc` cleans, processes and visualizes highly resolved time series of dendrometer data in two steps; raw dendrometer data is aligned to regular time intervals (level 1: L1) and cleaned (level 2: L2). 
