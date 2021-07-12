@@ -1,7 +1,7 @@
 ---
 author: [rpeters, ahurley, cpappas]
 draft: false
-date: 2021-07-15T20:00:00
+date: 2021-07-10T20:00:00
 categories: ["R", "workshop"]
 tags: ["reproducibility", "outliers", "data processing"]
 linktitle: datacleanr Workflow
