@@ -368,7 +368,7 @@ boxplot(twd_mm~tree+year,data=input,col=c("grey90","grey40"))
 
 ```
 
-## 7. Using `treeprocnet`
+## 7. Using `treenetproc`
 
 For use in publication, the reference is:
 
