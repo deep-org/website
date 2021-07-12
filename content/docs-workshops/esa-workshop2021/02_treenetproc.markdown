@@ -429,7 +429,7 @@ boxplot(twd_mm~tree+year,data=input,col=c("grey90","grey40"))
 # Question 2: For both species 2018 was the year with the most severe shrinkage.
 ```
 
-## 7. Using `treeprocnet`
+## 7. Using `treenetproc`
 
 For use in publication, the reference is:
 
