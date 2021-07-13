@@ -462,28 +462,33 @@ base_split_file_path <-  paste0(fs::path_ext_remove(path_save_prep),
 lapply(seq_along(split_output),
        function(x){
 
-           # get cleaner names
-           tmp_names <- names(split_output[x])
-           tmp_names <- gsub("[ ]", "_", tmp_names, perl = TRUE)
-
-           # make adjusted path
-           tmp_path <- paste0(base_split_file_path,
-                              tmp_names, ".RDS")
-           # replace any spaces with underscores
-
-
-
-           saveRDS(split_output[[x]],
-                   file = tmp_path)
+         # get cleaner names
+         # replace any spaces with underscores
+         
+         tmp_names <- names(split_output[x])
+         
+         tmp_names <- gsub("[ ]", "_", tmp_names, perl = TRUE)
+         
+         # make adjusted path
+         tmp_path <- paste0(base_split_file_path,
+                            tmp_names, ".RDS")
+         
+         
+         
+         saveRDS(split_output[[x]],
+                 file = tmp_path)
        })
 
-# launch datacleaner (when closing datacleaner the next sensor will be launched)
+
+# grab all split data sets for datacleanr to be run on
 paths <- list.files(path = ".",
                     pattern = "sf_long_split_",
                     full.names = TRUE)
 print(paths)
 
-# before closing, press the `Save Recipe & Data` 
+# launch datacleaner repeatedly for each split
+# (when closing datacleaner the next sensor will be launched)
+# before closing, press the `Save Recipe & Data`! 
 dcr_out<-lapply(paths,
        datacleanr::dcr_app)
 
