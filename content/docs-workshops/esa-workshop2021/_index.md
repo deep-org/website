@@ -27,8 +27,8 @@ Yet, multiple data-processing steps have to be taken to obtain usable measuremen
 Within this course (original given at the University of Helsinki) we present the basis of time series data processing, common issues and R packages (including datacleanr, treenetproc and TREX) capable of supporting fast and reproducible data processing. 
 
 
-The presentation for the course can be found [here](https://raw.githubusercontent.com/deep-org/workshop_data/master/UH/Course%20-%20Time%20series%20data%20processing.pdf),
-and along with example data sets [here](https://github.com/deep-org/workshop_data/tree/master/UH).
+The presentation for the course can be found [here](https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2021/ESA2021.pdf),
+and along with example data sets [here](https://github.com/deep-org/workshop_data/tree/master/esa-workshop2021).
 
 
 ![Screenshot of ESA 2021 workshop presentation](/docs-workshops/esa-workshop2021/_index_files/deepesa.png)

@@ -96,7 +96,7 @@ output <- lapply(iris_split,
 
 
 
-## 5. `datacleanr` with Dendrometer Measurements
+## 5. datacleanr with Dendrometer Measurements
 
 Radial stem size changes – measured with automated dendrometers in micrometer at intra-daily resolution – offer one of the most promising field datasets to link environmental conditions with both tree water relations and growth dynamics. However, the analysis of dendrometer measurements can be challenging, for multiple reasons: raw measurements often contain outliers, errors, shifts or jumps in the data due to adjustments of the device in the field, electronic failures or due to external mechanical disturbances. 
 
@@ -357,7 +357,7 @@ saveRDS(final,"dendrometer_cleaned.Rds")
     
 ```
 
-## 6. `datacleanr` assignement for sap flow data collected with thermal dissipation probes
+## 6. datacleanr assignement for sap flow data collected with thermal dissipation probes
 
 **Assignment**:  
 On the same trees thermal dissipation probe have been installed. These probes provide information on the voltage difference between a heated and unheated probes which can give information on the amount of sap flux density (amount of water flow per sapwood area per hour). One needs to clean this data, as erroneous signal are present due to thermal drifts and sensor failure. With the example presented above your assignement is to clean this data and stored the cleaned dataset. You can store the data in your working directory via this [link](https:/github.com/deep-org/workshop_data/raw/master/UH/HYY-sf.xlsx)
@@ -514,7 +514,7 @@ A key component is the reproducible code that is generated to repeat any interac
 
 ## 8. References
 
-- Hurley, A., Richard L, P., Pappas, C., Steger, D., & Heinrich, I. (2021). Addressing the need for interactive, efficient and reproducible data processing in ecology with the datacleanr R package. Submitted: PLOS One.
+- Hurley, A., Peters R., P., Pappas, C., Steger, D., & Heinrich, I. (2021). Addressing the need for interactive, efficient and reproducible data processing in ecology with the datacleanr R package. Submitted: PLOS One.
 - Alexander Hurley (2021). datacleanr: Interactive and Reproducible Data Cleaning. R package version 1.0.1. https://CRAN.R-project.org/package=datacleanr
 
 ## 9. Contact

@@ -93,7 +93,7 @@ In addition, a column named `ts` with timestamps in any standard date format (de
 
 ### Dendrometer data:
 
-Find an example data set to download and place in your current working directory [here](https://raw.githubusercontent.com/deep-org/workshop_data/master/UH/dendrometer_cleaned.Rds, or simply run the code below to import the data directly, assuming the `dendrometer_cleaned.Rds` file is in your working directory.
+Find an example data set to download and place in your current working directory [here](https://raw.githubusercontent.com/deep-org/workshop_data/master/UH/dendrometer_cleaned.Rds), or simply run the code below to import the data directly, assuming the `dendrometer_cleaned.Rds` file is in your working directory.
 
 
 ```r

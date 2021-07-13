@@ -1,7 +1,7 @@
 ---
 author: [rpeters, ahurley, cpappas]
 draft: false
-date: 2021-02-09T20:00:00
+date: 2021-07-10T20:00:00
 categories: ["R", "workshop"]
 tags: ["sap flow", "crown conductance", "uncertainty"]
 linktitle: TREX Workflow
@@ -324,7 +324,7 @@ To answer these questions please generate a barplot illustrating the maximum dai
 example <- aggregate(data,order.by=as.Date(index(data)),sum,na.rm=T)
 ```
 
-Also, see [https://doi.org/10.1093/treephys/18.8-9.499]() for a review on total daily water use in trees. 
+Also, see [https://doi.org/10.1093/treephys/18.8-9.499](https://doi.org/10.1093/treephys/18.8-9.499) for a review on total daily water use in trees. 
 
 ### Solution
 
