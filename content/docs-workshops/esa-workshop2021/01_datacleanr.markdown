@@ -437,7 +437,6 @@ Ones the long format data is stored under the name sf_long, we can start launchi
 
 ```r
 
-#ANSWERS FOR PARTICIPANTS [hidden in provided version]
 split_output <- base::split(sf_long,
                                         f = sf_long[ , "sensor"])
 
