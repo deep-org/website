@@ -299,7 +299,7 @@ When scrolling through to July 2009 (2009-07), one can see that although most of
 
 ## 6. Data Interpretation
 
-**Assignment**: 
+### Assignment: 
 The processed dendrometer data provides information on the amount of growth (column `gro_yr` in `dendro_data_L2`).
 From the pdf files it is clear that the growing season of these trees runs from April until August.
 These months can be isolated by using the `ts` column and one could then assess for both tree species how much growth was obtained in each year (difference between the minimum `gro_yr` and maximum `gro-yr`).
@@ -385,7 +385,7 @@ diff(max_growth$x)
 # Question 2: Birch grows faster in 2017, while Scots pine grows better in 2016.
 ```
 
-**Assignment**:  
+### Assignment:  
 Tree water deficit (column twd) has also been calculated. TWD provides information on how much the tree has shrunk and thus provides information on the water stress a tree experienced during specific periods. Although the site is relatively wet and cold, some summer months can cause measurable water loss for these individuals. During the peak summer month (July) water loss can be quite substantial. Using this TWD information one could ask:
 
 - 1) Which tree showed more shrinkage during the peak summer month?  

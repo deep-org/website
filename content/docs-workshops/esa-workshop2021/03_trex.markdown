@@ -307,7 +307,7 @@ sfd_final<-window(sfd_data,start= as.POSIXct("2015-01-01 00:00:00",format="%Y-%m
                 end= as.POSIXct("2017-12-31 00:00:00",format="%Y-%m-%d %H:%M:%S",tz="UTC"))
 ```
 
-**Assignment**:  
+### Assignment:  
 Sap flux density data is highly relevant as it can provide information on both the maximum transpiration rates per unit sapwood area as the total water use per year. 
 For context, this tree has a diameter of 20.6 cm, a bark thickness of 1.3 cm and a sapwood thickness of 4.3 cm.
 With this information we can calculate the daily transpiration rate per sapwood area and for the entire tree (by multiplying the sap flux density value by the sapwood area).

@@ -374,7 +374,7 @@ saveRDS(final,"dendrometer_cleaned.Rds")
 
 ## 6. datacleanr assignement for sap flow data collected with thermal dissipation probes
 
-**Assignment**:  
+### Assignment:  
 On the same trees thermal dissipation probe have been installed. These probes provide information on the voltage difference between a heated and unheated probes which can give information on the amount of sap flux density (amount of water flow per sapwood area per hour). One needs to clean this data, as erroneous signal are present due to thermal drifts and sensor failure. With the example presented above your assignement is to clean this data and stored the cleaned dataset. You can store the data in your working directory via this [link](https:/github.com/deep-org/workshop_data/raw/master/UH/HYY-sf.xlsx)
 
 The data can be obtained by using the following code: 
