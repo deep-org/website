@@ -2,7 +2,7 @@
 title: A Comprehensive Toolbox for Tree Physiological Data Processing in R
 date: "2021-02-09T00:00:00Z"
 draft: false
-linktitle: Tree Physiological Toolbox
+linktitle: ESA 2021 Tree Physiological Toolbox
 menu:
     esa2021-workshop:
       name: Introduction
