@@ -481,7 +481,7 @@ dcr_out<-lapply(paths,
 
 ```
 
-Now that each sensor is cleaned, combine the data and store write it to a single `Rds` file (named: `sapflow_cleaned.Rds`). 
+Now that each sensor is cleaned, combine the data and write it to a single `Rds` file (named: `sapflow_cleaned.Rds`). 
 
 
 ```r
