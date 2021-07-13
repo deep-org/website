@@ -30,8 +30,7 @@ The presentation for the course can be found [here](https://raw.githubuserconten
 and along with example data sets [here](https://github.com/deep-org/workshop_data/tree/master/esa-workshop2021).
 
 
-Participants should bring their own laptops with pre-installed [`R`](https://r-project.org)/[`RStudio`](https://rstudio.com/). 
-Data files and codes for this workshop will be made publicly available, so participants and those unable to attend will have access to these resources.
+Participants should bring their own laptops with pre-installed [`R`](https://r-project.org)/[`RStudio`](https://rstudio.com/).
 
 ![Screenshot of ESA 2021 workshop presentation](/docs-workshops/esa-workshop2021/_index_files/deepesa.png)
 
