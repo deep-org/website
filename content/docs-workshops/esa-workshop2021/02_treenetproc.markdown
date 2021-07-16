@@ -460,13 +460,17 @@ citation("treenetproc")
 ## 8. References
 
 
-- Knüsel, S., Peters, R. L., Haeni, M., Wilhelm, M., & Zweifel, R. (2021). Processing and Extraction of Seasonal Tree Physiological Parameters from Stem Radius Time Series. Forests, 12(6), 765. https://doi.org/10.3390/f12060765  
+- Knüsel, S, Peters, RL, Haeni, M, Wilhelm, M, & Zweifel, R (2021). Processing and Extraction of Seasonal Tree Physiological Parameters from Stem Radius Time Series. Forests, 12(6), 765. https://doi.org/10.3390/f12060765  
 - Pappas C, Peters RL, Fonti P (2020) Linking variability of tree water use and growth with species resilience to environmental changes. Ecography. 43: 1-14.  
 - Zweifel R, Haeni M, Buchmann N, Eugster W (2016) Are trees able to grow in periods of stem shrinkage? New Phytol. 211:839-49.  
+- Zweifel R, Sterck F, Braun S, Buchmann N, Eugster W, Gessler A, Haeni M, Peters RL, Walthert L, Wilhelm M, et al. (2021) Why trees grow at night. New Phytologist. doi 10.1111/nph.17552.   
+https://doi.org/10.1111/nph.17552
+
 
 **See also:**
 - [`treenetproc` package vignette](https://rdrr.io/github/treenet/treenetproc/f/vignettes/Introduction-to-treenetproc.Rmd)
 - [The Lötschental tree-growth monitoring transect](https://www.wsl.ch/en/tree-ring-research/the-loetschental-tree-growth-monitoring-transect.html)
+- [TreeNet - The biological drought and growth indicator network](https://treenet.info)
 
 ## 9. Contact
 
