@@ -290,6 +290,7 @@ For details on this method please refer to [this section](https://besjournals.on
 
 # see help page for a detailed description
 #?tdm_uncertain
+set.seed(1234)
 output <- tdm_uncertain(window(sensor_raw_1h, 
                               start = "2015-04-01 00:00:00",
                               end = "2015-09-01 00:00:00"),

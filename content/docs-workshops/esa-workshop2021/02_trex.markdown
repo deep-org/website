@@ -380,6 +380,7 @@ For details on this method please refer to [this section](https://besjournals.on
 
 # see help page for a detailed description
 #?tdm_uncertain
+set.seed(1234)
 output <- tdm_uncertain(window(sensor_raw_1h, 
                               start = "2015-04-01 00:00:00",
                               end = "2015-09-01 00:00:00"),
@@ -439,7 +440,7 @@ citation("TREX")
 
 ## 10. Contact
 
-For questions, please get in touch with <a href="mailto:christoforos.pappas@teluq.ca?subject=ESA 2021: WK 24 - A Comprehensive Toolbox for Tree Physiological Data Processing in R">Christoforos Pappas"</a>
+For questions, please get in touch with <a href="mailto:christoforos.pappas@teluq.ca?subject=ESA 2021: WK 24 - A Comprehensive Toolbox for Tree Physiological Data Processing in R">Christoforos Pappas</a>
 
 
 
