@@ -525,4 +525,4 @@ A key component is the reproducible code that is generated to repeat any interac
 
 ## 9. Contact
 
-For questions, please get in touch with <a href="mailto:hurley@gfz-potsdam.de?subject=Time Series Course - 2021">Richard Peters</a>
+For questions, please get in touch with <a href="mailto:hurley@gfz-potsdam.de?subject=ESA 2021: WK 24 - A Comprehensive Toolbox for Tree Physiological Data Processing in R">Alex Hurley"</a>

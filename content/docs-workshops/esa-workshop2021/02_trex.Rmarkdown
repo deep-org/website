@@ -7,10 +7,11 @@ tags: ["sap flow", "crown conductance", "uncertainty"]
 linktitle: TREX Workflow
 menu:
     esa2021-workshop:
-      weight: 30
+      weight: 20
 title: Using TREX to process Hyytiälä sap flow data
 type: docs
 toc: true
+math: true
 ---
 
 # TREX Workflow
@@ -46,7 +47,6 @@ packages <- (c("remotes","zoo","lubridate","shiny","plotly"))
 install.packages(setdiff(packages, rownames(installed.packages())))
 remotes::install_github("the-Hull/TREX")
 
-# the manuscript version of TREX is available on cran as "TREXr", i.e., install.packages("TREXr"); library(TREXr)
 
 ```
 
@@ -97,7 +97,7 @@ plot(value~timestamp,data=sel_sensor,type="l")
 
 ```
 
-We can see from the data that there is a sensor drift in the $\Delta V$ values (normally ranging between approximately 0.15 and 0.6) in the beginning of 2018. 
+We can see from the data that there is a sensor drift in the \\(\Delta V\\) values (normally ranging between approximately 0.15 and 0.6) in the beginning of 2018. 
 This could impact our final results. 
 There are ways of correcting for such drifts, but for simplicity we ignore this issue. Now the data is ready for processing.  
 
@@ -132,7 +132,7 @@ plot(sensor_raw_1h, main="hourly raw sap flow data (mV)")
 
 ```
 
-Now that the data has been checked by the internal `TREX` functions, multiple steps need to be taken to convert $\Delta V$ values to sap flux density.
+Now that the data has been checked by the internal `TREX` functions, multiple steps need to be taken to convert \\(\Delta V\\) values to sap flux density.
 First we need to establish zero-flow conditions (which typically happen at night).
 
 ## 4. Estimate zero-flow conditions (DTmax) 
@@ -166,7 +166,7 @@ legend("bottomright", c("raw",  "max.dr"),
 }
 ```
 
-The zero-flow condition values have been established and these will add in converting the raw $\Delta V$ value to `K`.
+The zero-flow condition values have been established and these will add in converting the raw \\(\Delta V\\) value to `K`.
 `K` can be used to calculate sap flux density.
 `K` is close to 0 when the raw data is close to the zero-flow condition value (orange lines in the previous plots).
 A high proportional difference between the raw line and zero-flow conditions translates to high sap flow. 
@@ -207,7 +207,7 @@ output.data <- tdm_cal.sfd(SFD_damp,
 
 ```
 
-Now that we have calculated the sap flux density (`SFD` in $cm^3 cm^{-2} h^{-1}$) we need to inspect the data.
+Now that we have calculated the sap flux density (`SFD` in \\(cm^3 cm^{-2} h^{-1}\\)) we need to inspect the data.
 
 ```{r echo = TRUE, eval = TRUE} 
 # extract the sfd data from the data file
@@ -323,4 +323,7 @@ citation("TREX")
 
 ## 10. Contact
 
-For questions, please get in touch with <a href="mailto:Richard.Peters@UGent.be?subject=Time Series Course - 2021">Richard Peters</a>
+For questions, please get in touch with <a href="mailto:christoforos.pappas@teluq.ca?subject=ESA 2021: WK 24 - A Comprehensive Toolbox for Tree Physiological Data Processing in R">Christoforos Pappas"</a>
+
+
+

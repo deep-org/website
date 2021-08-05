@@ -7,7 +7,7 @@ tags: ["dendrometer", "tree water deficit", "treenetproc"]
 linktitle: treenetproc Workflow
 menu:
     esa2021-workshop:
-      weight: 20
+      weight: 30
 title: Using treenetproc to process Hyytiälä dendrometer data
 type: docs
 # toc: true
@@ -237,7 +237,7 @@ Within this `.pdf` the first three plots illustrate the cleaning, while the last
 ## [1] "plot data..."
 ```
 
-<img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/error-detection-nopdf-1.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/error-detection-nopdf-2.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/error-detection-nopdf-3.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/error-detection-nopdf-4.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/error-detection-nopdf-1.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/error-detection-nopdf-2.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/error-detection-nopdf-3.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/error-detection-nopdf-4.png" width="1600" />
 
 **Figure:** *Visualisation plot of the function `proc_dendro_L2`. The first panel shows the stem radius changes of time-aligned dendrometer data (L1). The second panel shows cleaned L2 data. The third panel shows the data jump correction-induced differences between L1 and L2 data  on a logarithmic scale. The fourth panel shows the tree-water deficit (`twd`). The final panel shows the annually accumulated growth curves (`gro_yr`).*
 
@@ -288,7 +288,7 @@ dendro_data_L2_clip <- proc_dendro_L2(dendro_L1 = dendro_data_L1_clip,
 ## [1] "plot data..."
 ```
 
-<img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/plot-mon-1.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/plot-mon-2.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/plot-mon-3.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/plot-mon-4.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/plot-mon-1.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/plot-mon-2.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/plot-mon-3.png" width="1600" /><img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/plot-mon-4.png" width="1600" />
 
 
 **Figure:** *The plot contains an example of the data, with 1) the stem radius changes of the raw time-aligned L1 dendrometer data in the first panel, 2) the stem radius changes of the cleaned L2 dendrometer data (with L1 data in the background in grey) in the second panel. Interpolated points are circled and frost periods are indicated with a horizontal, cyan line, 3) the changes between L1 and L2 data (red) as well as the deleted values (pink) in the third panel, 4) and the tree water deficit (`twd`) in the last panel.*
@@ -372,7 +372,7 @@ input$growth_mm<-input$growth_micron*0.001
 barplot(growth_mm~tree+year,data=input,beside=T,legend=T)
 ```
 
-<img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/data-import-dendro-1-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/data-import-dendro-1-1.png" width="1600" />
 
 ```{.r .fold-hide}
 
@@ -421,7 +421,7 @@ input$twd_mm<-input$twd*0.001
 boxplot(twd_mm~tree+year,data=input,col=c("grey90","grey40"))
 ```
 
-<img src="/docs-workshops/esa-workshop2021/02_treenetproc_files/figure-html/data-import-dendro-2-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/03_treenetproc_files/figure-html/data-import-dendro-2-1.png" width="1600" />
 
 ```{.r .fold-hide}
 
@@ -439,9 +439,10 @@ citation("treenetproc")
 ## 
 ## To cite treenetproc in publications use:
 ## 
-##   Knüsel S., Haeni M., Wilhelm M., Peters R.L., Zweifel R. 2020.
-##   treenetproc: towards a standardized processing of stem radius data.
-##   In prep.
+##   Knüsel S., Peters R.L., Haeni M., Wilhelm M., Zweifel R. 2021.
+##   Processing and extraction of seasonal tree physiological parameters
+##   from stem radius time series. Forests: 12(6): 765.
+##   https://doi.org/10.3390/f12060765.
 ## 
 ##   Haeni M., Knüsel S., Wilhelm M., Peters R.L., Zweifel R. 2020.
 ##   treenetproc - Clean, process and visualise dendrometer data. R
@@ -474,4 +475,4 @@ https://doi.org/10.1111/nph.17552
 
 ## 9. Contact
 
-For questions, please get in touch with <a href="mailto:Richard.Peters@UGent.be?subject=Time Series Course - 2021">Richard Peters</a>
+For questions, please get in touch with <a href="mailto:Richard.Peters@UGent.be?subject=ESA 2021: WK 24 - A Comprehensive Toolbox for Tree Physiological Data Processing in R">Richard Peters</a>

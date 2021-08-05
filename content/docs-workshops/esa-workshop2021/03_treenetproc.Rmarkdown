@@ -7,7 +7,7 @@ tags: ["dendrometer", "tree water deficit", "treenetproc"]
 linktitle: treenetproc Workflow
 menu:
     esa2021-workshop:
-      weight: 20
+      weight: 30
 title: Using treenetproc to process Hyytiälä dendrometer data
 type: docs
 # toc: true
@@ -393,4 +393,4 @@ https://doi.org/10.1111/nph.17552
 
 ## 9. Contact
 
-For questions, please get in touch with <a href="mailto:Richard.Peters@UGent.be?subject=Time Series Course - 2021">Richard Peters</a>
+For questions, please get in touch with <a href="mailto:Richard.Peters@UGent.be?subject=ESA 2021: WK 24 - A Comprehensive Toolbox for Tree Physiological Data Processing in R">Richard Peters</a>

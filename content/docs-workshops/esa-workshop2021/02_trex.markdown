@@ -7,10 +7,11 @@ tags: ["sap flow", "crown conductance", "uncertainty"]
 linktitle: TREX Workflow
 menu:
     esa2021-workshop:
-      weight: 30
+      weight: 20
 title: Using TREX to process Hyytiälä sap flow data
 type: docs
 toc: true
+math: true
 ---
 
 # TREX Workflow
@@ -23,11 +24,11 @@ toc: true
 The package `TREX` (**tr**ee sapflow **ex**tractor) provides functionalities for thermal dissipation sap flow data pre- and post-processing.
 More specifically, raw sap flow data (expressed as temperature or voltage differences) can be:
 
-- visually inspected and outliers can be identified and removed (manual and automatic detection),
+- visually inspected and outliers can be identified and removed (manual and automatic detection) using `datacleanr`,
 - zero-flow conditions can be derived using a wealth of well-established approaches,
 - sap flow rates can be estimated using either literature- or user-specific calibration parameters for the thermal dissipation method,
-- uncertainty of sap flow estimates stemming from parameter choices can be assessed,
-- tree eco-physiologial responses to environmental drivers can be derived (e.g., crown conductance vs vapor pressure deficit relations).
+- uncertainty of sap flow estimates stemming from parameter choices can be assessed by means of global sensitivity and uncertainty analysis,
+- tree eco-physiologial responses to environmental drivers can be derived (e.g., crown conductance vs. vapor pressure deficit relations).
 
 For more details, visit the dedicated [`TREX` website](https://the-hull.github.io/TREX/index.html) or the [manuscript](https://doi.org/10.1111/2041-210X.13524).
 
@@ -40,18 +41,12 @@ packages <- (c("remotes","zoo","lubridate","shiny","plotly"))
 install.packages(setdiff(packages, rownames(installed.packages())))
 remotes::install_github("the-Hull/TREX")
 
-# the manuscript version of TREX is available on cran via:
-# install.packages("TREXr) 
-# but not the adjusted name!
-
 ```
 
 
 
 ```r
 library(TREX)
-# or 
-# library(TREXr) for the manuscript version
 
 
 # to get a full list of available functionalities check
@@ -59,9 +54,6 @@ library(TREX)
 
 library(zoo) # work with time series objects
 library(lubridate) # work with date formats
-library(shiny) # visual inspection and outlier detection
-library(plotly) # interactive plots
-
 
 # helper functions
 left <-  function(string, char){substr(string, 1,char)}
@@ -72,7 +64,7 @@ right <-  function (string, char){substr(string,nchar(string)-(char-1),nchar(str
 
 ### Import data
 
-Sap flow time series data and concurrently recorded meteorological data should be provided as input.
+Sap flow time series and, if available, concurrently recorded meteorological data should be provided as input.
 Find an example data set to download and place in your current working directory [here](https://raw.githubusercontent.com/deep-org/workshop_data/master/UH/sapflow_cleaned.Rds), or use the code below to download it directly.
 
 
@@ -87,12 +79,20 @@ download.file(url, destfile = "sapflow_cleaned.Rds", method = "curl")
 
 # import table cleaned with datacleanr
 sensor<-readRDS("sapflow_cleaned.Rds")
-
-# the code runs for individual trees, so we select the birch tree
-sel_sensor<-sensor[which(sensor$sensor=="sapflux_density_pine_Sylvib_HD" ),]
+head(sensor)
+##             timestamp                          sensor value
+## 1 2015-01-01 00:00:00 sapflux_density_birch_Jennib_HD    NA
+## 2 2015-01-01 00:10:00 sapflux_density_birch_Jennib_HD    NA
+## 3 2015-01-01 00:20:00 sapflux_density_birch_Jennib_HD    NA
+## 4 2015-01-01 00:30:00 sapflux_density_birch_Jennib_HD    NA
+## 5 2015-01-01 00:40:00 sapflux_density_birch_Jennib_HD    NA
+## 6 2015-01-01 00:50:00 sapflux_density_birch_Jennib_HD    NA
 unique(sensor$sensor)
 ## [1] "sapflux_density_birch_Jennib_HD" "sapflux_density_pine_Penttib_HD"
 ## [3] "sapflux_density_pine_Sylvib_HD"
+
+# the code runs for individual trees, so we select the tree Pinus Sylvestris, i.e., 'sapflux_density_pine_Sylvib_HD'
+sel_sensor<-sensor[which(sensor$sensor=="sapflux_density_pine_Sylvib_HD" ),]
 # for the package we only need to timestamp and value
 sel_sensor<-as.data.frame(sel_sensor)[,c("timestamp","value")]
 
@@ -100,9 +100,9 @@ sel_sensor<-as.data.frame(sel_sensor)[,c("timestamp","value")]
 plot(value~timestamp,data=sel_sensor,type="l")
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/unnamed-chunk-2-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/unnamed-chunk-2-1.png" width="1600" />
 
-We can see from the data that there is a sensor drift in the `\(\Delta V\)` values (normally ranging between approximately 0.15 and 0.6) in the beginning of 2018. 
+We can see from the data that there is a sensor drift in the \\(\Delta V\\) values (normally ranging between approximately 0.15 and 0.6) in the beginning of 2018. 
 This could impact our final results. 
 There are ways of correcting for such drifts, but for simplicity we ignore this issue. Now the data is ready for processing.  
 
@@ -123,14 +123,14 @@ sensor_raw_10min <- is.trex(sel_sensor,
                            solar.time=F,
                            ref.add=FALSE,
                            df=FALSE,
-                           tz.force=TRUE)
+                           tz.force=FALSE)
 head(sensor_raw_10min)
 ## 2015-01-01 00:00:00 2015-01-01 00:10:00 2015-01-01 00:20:00 2015-01-01 00:30:00 
 ##                  NA                  NA                  NA                  NA 
 ## 2015-01-01 00:40:00 2015-01-01 00:50:00 
 ##                  NA                  NA
 
-# now that the data has been checked on can adjust the start and the end time of the series or alter the temporal resolution 
+# now that the data has been checked, we can adjust the start and the end time of the time series or alter the temporal resolution 
 ?dt.steps
 sensor_raw_1h <- dt.steps(input=sensor_raw_10min,
                          start = "2015-04-01 00:00:00",
@@ -142,9 +142,9 @@ sensor_raw_1h <- dt.steps(input=sensor_raw_10min,
 plot(sensor_raw_1h, main="hourly raw sap flow data (mV)") 
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/unnamed-chunk-3-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/unnamed-chunk-3-1.png" width="1600" />
 
-Now that the data has been checked by the internal `TREX` functions, multiple steps need to be taken to convert `\(\Delta V\)` values to sap flux density.
+Now that the data has been checked by the internal `TREX` functions, multiple steps need to be taken to convert \\(\Delta V\\) values to sap flux density.
 First we need to establish zero-flow conditions (which typically happen at night).
 
 ## 4. Estimate zero-flow conditions (DTmax) 
@@ -206,7 +206,7 @@ legend("bottomright", c("raw", "max.dr"),
 }
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/pressure-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/pressure-1.png" width="1600" />
 
 ```r
 
@@ -218,9 +218,9 @@ legend("bottomright", c("raw",  "max.dr"),
 }
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/pressure-2.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/pressure-2.png" width="1600" />
 
-The zero-flow condition values have been established and these will add in converting the raw `\(\Delta V\)` value to `K.`
+The zero-flow condition values have been established and these will add in converting the raw \\(\Delta V\\) value to `K`.
 `K` can be used to calculate sap flux density.
 `K` is close to 0 when the raw data is close to the zero-flow condition value (orange lines in the previous plots).
 A high proportional difference between the raw line and zero-flow conditions translates to high sap flow. 
@@ -242,7 +242,7 @@ A high proportional difference between the raw line and zero-flow conditions tra
 
 ```
 
-As no heartwood correction is needed we can now calculate the `K` values and convert these values to sap flux density (using existing calibration curves). 
+As no heartwood correction is needed we can now calculate the `K` values and convert these values to sap flux density (using existing calibration parameters). 
 
 ## 6. Calculate sap flux density
 
@@ -281,9 +281,9 @@ output.data <- tdm_cal.sfd(SFD_damp,
                           wood = "Coniferous")
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/unnamed-chunk-5-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/unnamed-chunk-5-1.png" width="1600" />
 
-Now that we have calculated the sap flux density (`SFD` in `\(cm^3 cm^{-2} h^{-1}\)`) we need to inspect the data.
+Now that we have calculated the sap flux density (`SFD` in \\(cm^3 cm^{-2} h^{-1}\\)) we need to inspect the data.
 
 
 ```r
@@ -294,7 +294,7 @@ sfd_data<-output.data$sfd.dr$sfd
 plot(sfd_data,ylab=expression("SFD ("*cm^3*" water "*cm^-2*" sapwood "*h^-1*")"))
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/unnamed-chunk-6-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/unnamed-chunk-6-1.png" width="1600" />
 
 From this plot it is clear that the sensor drift in 2018 provided high an likely unrealistic values.
 A such we focus our analyses on 2015, 2016 and 2017.
@@ -339,7 +339,7 @@ input<-data.frame(year=as.factor(index(sfd_annual)),max_daily_sfd=as.numeric(sfd
 barplot(max_daily_sfd~year,data=input,beside=T)
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/data-import-dendro-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/data-import-dendro-1.png" width="1600" />
 
 ```{.r .fold-hide}
 
@@ -353,7 +353,7 @@ sf_daily<-sfd_daily*sw_area*0.001
 plot(sf_daily,ylab=expression("Water (l "*d^-1*")"))
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/data-import-dendro-2.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/data-import-dendro-2.png" width="1600" />
 
 ```{.r .fold-hide}
 
@@ -395,7 +395,7 @@ output <- tdm_uncertain(window(sensor_raw_1h,
                        make.plot=TRUE)
 ```
 
-<img src="/docs-workshops/esa-workshop2021/03_trex_files/figure-html/unnamed-chunk-9-1.png" width="1600" />
+<img src="/docs-workshops/esa-workshop2021/02_trex_files/figure-html/unnamed-chunk-9-1.png" width="1600" />
 
 
 
@@ -439,4 +439,7 @@ citation("TREX")
 
 ## 10. Contact
 
-For questions, please get in touch with <a href="mailto:Richard.Peters@UGent.be?subject=Time Series Course - 2021">Richard Peters</a>
+For questions, please get in touch with <a href="mailto:christoforos.pappas@teluq.ca?subject=ESA 2021: WK 24 - A Comprehensive Toolbox for Tree Physiological Data Processing in R">Christoforos Pappas"</a>
+
+
+
