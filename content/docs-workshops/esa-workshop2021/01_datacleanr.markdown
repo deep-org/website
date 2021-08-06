@@ -474,6 +474,11 @@ paths <- list.files(path = ".",
                     full.names = TRUE)
 print(paths)
 
+# [1] "./sf_long_split_sapflux_density_birch_Jennib_HD.RDS"
+# [2] "./sf_long_split_sapflux_density_pine_Penttib_HD.RDS"
+# [3] "./sf_long_split_sapflux_density_pine_Sylvib_HD.RDS" 
+
+
 # launch datacleaner repeatedly for each split
 # (when closing datacleaner the next sensor will be launched)
 # before closing, press the `Save Recipe & Data`! 
