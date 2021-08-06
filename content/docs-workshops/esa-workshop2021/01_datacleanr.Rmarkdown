@@ -55,7 +55,7 @@ The latest release from GitHub can be installed using:
 
 ```{r eval = FALSE}
 # additional installs for later use
-packages <- (c("remotes", "dplyr", "forcats","readxl", "lubridate"))
+packages <- (c("remotes", "dplyr", "forcats","readxl", "lubridate", "janitor"))
 install.packages(setdiff(packages,
                          rownames(installed.packages())))
 remotes::install_github("the-hull/datacleanr")
@@ -161,7 +161,7 @@ Alternatively, uncomment the first two lines of code below
 
 ```{r}
 url <- "https://raw.githubusercontent.com/deep-org/workshop_data/master/UH/HYY-dendro.xlsx"
-download.file(url, destfile = "HYY-dendro.xlsx")
+download.file(url, destfile = "HYY-dendro.xlsx",  method = "curl")
 
 require(readxl)
 
@@ -252,11 +252,12 @@ Now that the timestamp has been tested, we can start transforming the data into 
 
 ```{r}
 # generate a long format for the output file
-output_long <- tidyr::pivot_longer(data = output,
-                                          cols = !tidyselect::all_of(c("timestamp")),
-                                          names_to = "sensor",
-                                          values_to = "value") %>%
-    dplyr::arrange(sensor)
+output_long <- tidyr::pivot_longer(
+  data = output,
+  cols = !tidyselect::all_of(c("timestamp")),
+  names_to = "sensor",
+  values_to = "value") %>%
+  dplyr::arrange(sensor)
 
 # check all columns have appropriate values
 str(output_long)
