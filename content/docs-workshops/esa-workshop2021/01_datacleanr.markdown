@@ -36,7 +36,7 @@ The latest release from GitHub can be installed using:
 
 ```r
 # additional installs for later use
-packages <- (c("remotes", "dplyr", "forcats","readxl", "lubridate", "janitor"))
+packages <- (c("remotes", "dplyr", "forcats","readxl", "lubridate", "janitor", "tidyr"))
 install.packages(setdiff(packages,
                          rownames(installed.packages())))
 remotes::install_github("the-hull/datacleanr")
@@ -144,7 +144,7 @@ Alternatively, uncomment the first two lines of code below
 
 
 ```r
-url <- "https://raw.githubusercontent.com/deep-org/workshop_data/master/UH/HYY-dendro.xlsx"
+url <- "https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2021/HYY-dendro.xlsx"
 download.file(url, destfile = "HYY-dendro.xlsx",  method = "curl")
 
 require(readxl)
@@ -370,8 +370,8 @@ The data can be obtained by using the following code:
 
 require(readxl)
 
-url <- "https:/github.com/deep-org/workshop_data/raw/master/UH/HYY-sf.xlsx"
-download.file(url, destfile = "HYY-sf.xlsx")
+url <- "https://raw.githubusercontent.com/deep-org/workshop_data/master/esa-workshop2021/HYY-sf.xlsx"
+download.file(url, destfile = "HYY-sf.xlsx", method = "curl")
 
 # grab example data
 input <- read_xlsx("HYY-sf.xlsx")
