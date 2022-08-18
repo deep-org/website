@@ -9,7 +9,7 @@ all_day: false
 date: "2022-06-23T10:00:00Z"
 date_end: "2022-06-23T12:00:00Z"
 
-event: Time Series Course
+event: NADEF2022
 location: Rapide-Danseur, Quebec, Canada
 featured: false
 

@@ -36,3 +36,8 @@ public/
 themes/hugo-academic/exampleSite
 proc_L2_plot.pdf
 sapflow_cleaned.Rds
+HYY-dendro.xlsx
+HYY-sf.xlsx
+sf_long_split_sapflux_density_birch_Jennib_HD.RDS
+sf_long_split_sapflux_density_pine_Penttib_HD.RDS
+sf_long_split_sapflux_density_pine_Sylvib_HD.RDS
